@@ -15,6 +15,7 @@ function App() {
                 <Route path="/login" element={<LogIn />} />
                 <Route path="/signin" element={<SignIn />} />
                 <Route path="/payment" element={<ProtectedRoute><Payment /></ProtectedRoute>} />
+                <Route path="/beneficiary" element={<BeneficiaryPage/>}/>
             </Routes>
         </BrowserRouter>
     )
