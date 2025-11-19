@@ -50,7 +50,7 @@ function SignIn() {
                     <Email input={email} setInput={setEmail}/>
                     <Password input={password} setInput={setPassword}/>
                     <Submit onClick={handleSubmit}/>
-                    <a href="/src/identification/LogIn.jsx">Vous avez déjà un compte ?</a>
+                    <a href="/login">Vous avez déjà un compte ?</a>
                 </form>
                 </div>
             </div>

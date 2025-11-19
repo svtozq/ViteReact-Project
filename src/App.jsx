@@ -1,38 +1,25 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import {Route, Routes, BrowserRouter, Link} from "react-router-dom";
+import SignIn from "./identification/SignIn.jsx";
+import LogIn from "./identification/LogIn.jsx";
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-        <a href="/src/identification/SignIn.jsx">
-            <h1>Sign In</h1>
-        </a>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+function SignInPage() {
+    return <h1>Sign In Page</h1>;
 }
 
-export default App
+function LogInPage() {
+    return <h1>Log In Page</h1>;
+}
+
+function App() {
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path="/login" element={<LogIn />} />
+                <Route path="/signin" element={<SignIn />} />
+            </Routes>
+        </BrowserRouter>
+    )
+}
+
+export default App;
