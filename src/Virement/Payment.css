@@ -150,3 +150,31 @@ textarea:focus {
     border-radius: 5px;
     z-index: 1000;
 }
+
+
+/* Conteneur des boutons en haut à droite */
+.top-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+/* Style général des boutons icônes */
+.icon-button {
+    background-color: transparent;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+    color: #4f46e5;
+    transition: 0.2s ease;
+}
+
+.icon-button:hover {
+    color: #6366f1;
+    transform: scale(1.1);
+}
+
+.icon-button:active {
+    transform: scale(1);
+}
