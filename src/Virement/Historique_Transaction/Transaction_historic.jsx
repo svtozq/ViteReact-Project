@@ -1,14 +1,12 @@
 import { useState, useEffect } from 'react';
 import '../../css/Transaction_historic.css'
-import Button_history_Payment from "../Transaction/Button_History_Payment.jsx";
 import { useNavigate } from 'react-router-dom';
 import Button_back_Payment from "./Back_button_Payment.jsx";
 
 
+
 export default function Transaction_historic() {
     const [transactions, setTransactions] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
     const navigate = useNavigate();
 
     // Pour le bon format de date
@@ -53,14 +51,16 @@ export default function Transaction_historic() {
             <h2 className="Title">Mes Virement(s)</h2>
             <div className="transaction-list">
                 {transactions.map((t, index) => (
-                    <div key={index} className="transaction-item">
+                    <div key={index} className="transaction-item"
+                         onClick={() => navigate(`/transaction_historic_details/${t.id}`)}  //Pour recuperer l'id de la transaction en question
+                         style={{ cursor: "pointer" }}>
                         <div className="transaction-header">
                             <span className="transaction-mss"> Virement effectué à : {t.sender_first_name}</span>
-                            <span className="transaction-amount">{t.amount}€</span>
+                            <span className="transaction-amount">{t.amount} €</span>
                         </div>
                         <div className="transaction-sub">
                             <span>{formatDate(t.transaction_date)}</span>
-                            <span className="status"> VIREMENT EFFECTUE </span>
+                            <span className="status"> VIREMENT </span>
                             <span className="arrow">{'>'}</span>
                         </div>
                     </div>

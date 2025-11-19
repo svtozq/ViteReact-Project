@@ -7,7 +7,7 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
-    max-width: 600px;
+    width: 300px;
     margin: 0 auto;
 }
 
@@ -72,4 +72,58 @@
 .arrow {
     font-weight: bold;
     color: #888;
+}
+
+
+
+
+/* Container principal */
+.transaction-detail {
+    background-color: #f9f9f9; /* léger gris clair */
+    padding: 20px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    max-width: 500px;
+    margin: 20px auto;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Titre de section */
+.Title {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-size: 28px;
+    color: #333;
+}
+
+/* Chaque ligne de détail */
+.transaction-detail p {
+    font-size: 16px;
+    margin: 10px 0;
+    color: #555;
+}
+
+/* Montant mis en valeur */
+.transaction-detail p:first-child {
+    font-size: 20px;
+    font-weight: bold;
+    color: #2c7a7b; /* bleu-vert */
+}
+
+/* Statut avec un badge */
+.transaction-detail p:last-child {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 8px;
+    background-color: #e6fffa;
+    color: #2c7a7b;
+    font-weight: bold;
+}
+
+/* Message d'erreur */
+p {
+    text-align: center;
+    color: #c53030; /* rouge doux */
+    font-weight: bold;
 }

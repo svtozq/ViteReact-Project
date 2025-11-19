@@ -6,6 +6,7 @@ import Payment from "./Virement/Transaction/Payment.jsx";
 import Header from "./Header.jsx";
 import ProtectedRoute from "./TokenProtected.jsx";
 import Transaction_historic from "./Virement/Historique_Transaction/Transaction_historic.jsx";
+import Transaction_historic_details from "./Virement/Historique_Transaction/Transaction_historic_details.jsx";
 
 
 
@@ -18,7 +19,8 @@ function App() {
                 <Route path="/login" element={<LogIn />} />
                 <Route path="/signin" element={<SignIn />} />
                 <Route path="/payment" element={<ProtectedRoute><Payment /></ProtectedRoute>}/>
-                <Route path="/transaction_historic" element={<ProtectedRoute><Transaction_historic /></ProtectedRoute>}/>
+                <Route path="/transaction_historic" element={<ProtectedRoute><Transaction_historic/></ProtectedRoute>}/>
+                <Route path="/transaction_historic_details/:id" element={<ProtectedRoute><Transaction_historic_details/></ProtectedRoute>}/>
             </Routes>
         </BrowserRouter>
     )
