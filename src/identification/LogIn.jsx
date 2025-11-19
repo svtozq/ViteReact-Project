@@ -4,6 +4,7 @@ import Email from "./LogIn/Email.jsx";
 import Password from "./LogIn/Password.jsx";
 import Submit from "./LogIn/Submit.jsx";
 import LogOut from "./LogOut.jsx";
+import { Navigate } from "react-router-dom";
 
 function LogIn() {
     const [email, setEmail] = useState("");
@@ -28,6 +29,12 @@ function LogIn() {
             .then(response => response.json())
             .then(result => {
                 console.log("Réponse du back :", result);
+                if (result.token) {
+                    localStorage.setItem("token", result.token); // ✅ Stockage
+                    window.location.href = "/payment";  // redirige vers login
+                } else {
+                    alert("Email ou mot de passe incorrect");
+                }
             })
             .catch(error => {
                 console.error("Erreur :", error);
