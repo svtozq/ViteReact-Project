@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import LogOut from "./identification/LogOut.jsx";
+import './css/Header.css'
 
 function Header() {
     const token = localStorage.getItem("token");

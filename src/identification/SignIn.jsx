@@ -5,7 +5,6 @@ import FirstName from "./SignIn/FirstName.jsx";
 import Email from "./SignIn/Email.jsx";
 import Password from "./SignIn/Password.jsx";
 import Submit from "./SignIn/Submit.jsx";
-import LogOut from "./LogOut.jsx";
 
 function SignIn() {
     const [lastName, setLastName] = useState("");
@@ -55,7 +54,7 @@ function SignIn() {
                 </form>
                 </div>
             </div>
-            <LogOut />
+
         </>
     );
 }
