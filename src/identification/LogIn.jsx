@@ -3,11 +3,17 @@ import { useState } from 'react'
 import Email from "./LogIn/Email.jsx";
 import Password from "./LogIn/Password.jsx";
 import Submit from "./LogIn/Submit.jsx";
+import {Navigate} from "react-router-dom";
 
 function LogIn() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
+
+    const token = localStorage.getItem("token");
+    if (token) {
+        return <Navigate to="/payment" replace />;
+    }
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -30,17 +36,15 @@ function LogIn() {
                 const result = await response.json();
 
                 if (!response.ok) {
-                    // erreur envoyée par FastAPI
-                    setErrorMessage(result.detail || "Erreur inconnue");
+                    setErrorMessage(result.detail || "Unknown Error !");
                     return;
                 }
 
-                // ici tu es connecté
                 localStorage.setItem("token", result.token);
                 window.location.href = "/payment";
             })
             .catch(() => {
-                setErrorMessage("Erreur de connexion au serveur");
+                setErrorMessage("Connection Server Error !");
             });
     }
 
@@ -50,12 +54,11 @@ function LogIn() {
                 <h2>Log In</h2>
                 <Email input={email} setInput={setEmail}/>
                 <Password input={password} setInput={setPassword}/>
-                <Submit />
-                <a href="/signin">Vous n'avez pas de compte ?</a>
-
                 {errorMessage && (
                     <p className="error-message">{errorMessage}</p>
                 )}
+                <Submit />
+                <a href="/signin">Vous n'avez pas de compte ?</a>
             </form>
         </div>
     );

@@ -5,16 +5,25 @@ import FirstName from "./SignIn/FirstName.jsx";
 import Email from "./SignIn/Email.jsx";
 import Password from "./SignIn/Password.jsx";
 import Submit from "./SignIn/Submit.jsx";
+import {Navigate} from "react-router-dom";
 
 function SignIn() {
     const [lastName, setLastName] = useState("");
     const [firstName, setFirstName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
+
+    const token = localStorage.getItem("token");
+    if (token) {
+        return <Navigate to="/payment" replace />;
+    }
 
     //Bouton qui envoie les données recuperer au back
     function handleSubmit(e) {
         e.preventDefault();
+
+        setErrorMessage(""); // reset erreur
 
         const data = {
             last_name: String(lastName),
@@ -30,12 +39,18 @@ function SignIn() {
             },
             body: JSON.stringify(data)
         })
-            .then(response => response.json())
-            .then(result => {
-                console.log("Réponse du back :", result);
+            .then(async response => {
+                const result = await response.json();
+
+                if (!response.ok) {
+                    setErrorMessage(result.detail || "Unknown Error !");
+                    return;
+                }
+
+                window.location.href = "/login";
             })
-            .catch(error => {
-                console.error("Erreur :", error);
+            .catch(() => {
+                setErrorMessage("Connection Server Error !");
             });
     }
 
@@ -49,6 +64,9 @@ function SignIn() {
                     <FirstName input={firstName} setInput={setFirstName}/>
                     <Email input={email} setInput={setEmail}/>
                     <Password input={password} setInput={setPassword}/>
+                    {errorMessage && (
+                        <p className="error-message">{errorMessage}</p>
+                    )}
                     <Submit onClick={handleSubmit}/>
                     <a href="/login">Vous avez déjà un compte ?</a>
                 </form>
