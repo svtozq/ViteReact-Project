@@ -1,15 +1,14 @@
 import '../css/LogIn.css'
 import { useState } from 'react'
-import { useNavigate } from "react-router-dom";
 import Email from "./LogIn/Email.jsx";
 import Password from "./LogIn/Password.jsx";
 import Submit from "./LogIn/Submit.jsx";
 import LogOut from "./LogOut.jsx";
+import { Navigate } from "react-router-dom";
 
 function LogIn() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const navigate = useNavigate();
 
     //Bouton qui envoie les données recuperer au back
     function handleSubmit(e) {
@@ -30,11 +29,9 @@ function LogIn() {
             .then(response => response.json())
             .then(result => {
                 console.log("Réponse du back :", result);
-
-                // 👉 Sauvegarde le token dans le localStorage
                 if (result.token) {
                     localStorage.setItem("token", result.token); // ✅ Stockage
-                    navigate('/payment');
+                    window.location.href = "/payment";  // redirige vers login
                 } else {
                     alert("Email ou mot de passe incorrect");
                 }
@@ -57,7 +54,7 @@ function LogIn() {
                     </form>
                 </div>
             </div>
-            <LogOut/>
+            <LogOut />
         </>
     );
 }
