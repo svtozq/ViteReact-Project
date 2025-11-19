@@ -1,4 +1,5 @@
 import './App.css'
+
 import {Route, Routes, BrowserRouter, Link,Navigate} from "react-router-dom";
 import SignIn from "./identification/SignIn.jsx";
 import LogIn from "./identification/LogIn.jsx";
@@ -11,6 +12,7 @@ function SignInPage() {
 function LogInPage() {
     return <h1>Log In Page</h1>;
 }
+import BeneficiaryPage from "./beneficiary/beneficiaryPage";
 
 function App() {
     return (
@@ -23,6 +25,13 @@ function App() {
             </Routes>
         </BrowserRouter>
     )
+
+export default function App() {
+    return (
+        <div className="app">
+            <BeneficiaryPage />
+        </div>
+    );
 }
 
 export default App;
