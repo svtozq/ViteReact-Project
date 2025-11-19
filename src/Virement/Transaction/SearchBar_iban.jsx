@@ -1,4 +1,4 @@
-import './Payment.css'
+import '../../css/Payment.css'
 
 
 export default function SearchBar_iban({query, setQuery}) {

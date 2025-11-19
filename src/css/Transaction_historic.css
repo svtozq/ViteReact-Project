@@ -1,0 +1,75 @@
+.Title{
+    text-align: center;
+}
+
+/* Liste des transactions */
+.transaction-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Chaque transaction */
+.transaction-item {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 15px 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.transaction-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.transaction-header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 500;
+    font-size: 1rem;
+    margin-bottom: 8px;
+}
+
+
+/* Header de la transaction : message et montant */
+.transaction-mss {
+    display: flex;
+    justify-content: left;
+    font-weight: 500;
+    font-size: 1rem;
+    margin-bottom: 8px;
+    color: Black;
+}
+
+.transaction-amount {
+    display: flex;
+    justify-content: right;
+    font-weight: 500;
+    font-size: 1rem;
+    color: red;
+}
+
+/* Sous-info : date, statut et flèche */
+.transaction-sub {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: #555;
+    align-items: center;
+}
+
+/* Statut spécifique */
+.status {
+    color: green; /* rouge pour suppression ou attention */
+    font-weight: 600;
+    padding: 0 10px 0 10px;
+}
+
+/* Flèche */
+.arrow {
+    font-weight: bold;
+    color: #888;
+}
