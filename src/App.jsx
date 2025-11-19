@@ -12,26 +12,21 @@ function SignInPage() {
 function LogInPage() {
     return <h1>Log In Page</h1>;
 }
-import BeneficiaryPage from "./beneficiary/beneficiaryPage";
+import BeneficiaryPage from "./beneficiary/beneficiaryPage.jsx";
 
 function App() {
     return (
         <BrowserRouter>
             <Routes>
-                    <Route path="/" element={<Navigate to="/login" replace />} />
-                <Route path="/login" element={<LogIn />} />
-                <Route path="/signin" element={<SignIn />} />
-                <Route path="/payment" element={<Payment />} />
+                <Route path="/" element={<Navigate to="/login" replace/>}/>
+                <Route path="/login" element={<LogIn/>}/>
+                <Route path="/signin" element={<SignIn/>}/>
+                <Route path="/payment" element={<Payment/>}/>
+                <Route path="/beneficiary" element={<BeneficiaryPage/>}/>
             </Routes>
         </BrowserRouter>
     )
 
-export default function App() {
-    return (
-        <div className="app">
-            <BeneficiaryPage />
-        </div>
-    );
 }
+    export default App;
 
-export default App;
