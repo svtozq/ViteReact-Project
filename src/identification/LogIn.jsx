@@ -3,6 +3,7 @@ import { useState } from 'react'
 import Email from "./LogIn/Email.jsx";
 import Password from "./LogIn/Password.jsx";
 import Submit from "./LogIn/Submit.jsx";
+import LogOut from "./LogOut.jsx";
 
 function LogIn() {
     const [email, setEmail] = useState("");
@@ -46,6 +47,7 @@ function LogIn() {
                     </form>
                 </div>
             </div>
+            <LogOut />
         </>
     );
 }
