@@ -1,8 +1,9 @@
 import '../css/Beneficiary_Payment.css'
 import { useParams, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect,useState } from "react";
 import SearchBar_somme from "../Virement/Transaction/SearchBar.jsx";
 import Text_note from "../Virement/Transaction/Text_note.jsx";
+import SelectAccountType_source from "../Virement/Depot_argent/Select_depot_source.jsx";
 
 function Beneficiary_Payment() {
 
@@ -15,10 +16,31 @@ function Beneficiary_Payment() {
     const [errorMessage, setErrorMessage] = useState("");
     const [successMessage, setSuccessMessage] = useState("");
 
+    const [from_account_id, setFrom_account_id] = useState("");
+    const [accounts, setAccounts] = useState([]);
+
+    // Charger les comptes de l'utilisateur connecté
+    useEffect(() => {
+        fetch("http://127.0.0.1:8000/Bank/accounts/me", {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${localStorage.getItem("token")}`
+            }
+        })
+            .then(response => response.json())
+            .then(result => {
+                setAccounts(result.accounts);
+            })
+            .catch(error => {
+                setErrorMessage("Impossible de charger les comptes.");
+            });
+    }, []);
+
     // DÉTAILS À ENVOYER AU BACK
     const data = {
         amount: Number(amount),
         message: message,
+        from_account_id: parseInt(from_account_id),
         iban_account: iban
     };
 
@@ -77,6 +99,14 @@ function Beneficiary_Payment() {
                 <SearchBar_somme query={amount} setQuery={setAmount}/>
             </div>
 
+            {/* Selection du compte source */}
+            <div className="section">
+                <label className="section-label">Compte source</label>
+                <SelectAccountType_source type={from_account_id} setType={setFrom_account_id} accounts={accounts}/>
+                <p className="section-label2">
+                    Compte sélectionné : {accounts.find(acc => acc.id === parseInt(from_account_id))?.type || "Aucun"}
+                </p>
+            </div>
 
             {/* NOTE */}
             <div className="section">

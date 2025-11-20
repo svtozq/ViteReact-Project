@@ -61,12 +61,13 @@ export default function Transaction_historic_details() {
                 <div className="transaction-detail">
                     <p>Montant : {transaction.amount} €</p>
                     <p>Date : {formatDate(transaction.transaction_date)}</p>
-                    <p>Compte source : {transaction.from_account_id}</p>
-                    <p>Compte destinataire : {transaction.to_account_id}</p>
+                    <p>Compte source :  {transaction.from_account?.type || "Inconnu"}</p>
+                    <p>Compte destinataire :  {transaction.last_name} sur {transaction.to_account?.type || "Inconnu"}</p>
                     <p>Note : {transaction.message || "Aucune note"}</p>
                     <p>Statut : VIREMENT EFFECTUE</p>
                 </div>
             )}
+
 
             <div style={{textAlign: 'center', marginTop: '20px'}}>
                 <Button_back_Payment onClick={() => navigate('/transaction_historic')} />

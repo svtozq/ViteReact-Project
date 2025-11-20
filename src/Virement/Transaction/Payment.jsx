@@ -1,29 +1,53 @@
 import '../../css/Payment.css'
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import Button_Submit_Payment from "./Submit_Payment.jsx";
 import SearchBar_somme from "./SearchBar.jsx";
 import SearchBar_iban from "./SearchBar_iban.jsx";
 import Text_note from "./Text_note.jsx";
 import Button_history_Payment from "./Button_History_Payment.jsx";
 import { useNavigate } from 'react-router-dom';
+import SelectAccountType_source from "../Depot_argent/Select_depot_source.jsx";
 
 function Payment() {
+    const [errorMessage, setErrorMessage] = useState("");
+    const [successMessage, setSuccessMessage] = useState("");
+
     const [amount, setAmount] = useState("");
+    const [from_account_id, setFrom_account_id] = useState("");
     const [toAccount, setToAccount] = useState("");
     const [message, setMessage] = useState("");
     const cleanedIBAN = toAccount.replace(/\s+/g, "");
-    const [errorMessage, setErrorMessage] = useState("");
-    const [successMessage, setSuccessMessage] = useState("");
+    const [accounts, setAccounts] = useState([]);
     const navigate = useNavigate();
 
     // Récupération du token depuis le localStorage
     const token = localStorage.getItem("token");
     console.log("Token de connexion :", token);
 
+
+
+    // Charger les comptes de l'utilisateur connecté
+    useEffect(() => {
+        fetch("http://127.0.0.1:8000/Bank/accounts/me", {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${localStorage.getItem("token")}`
+            }
+        })
+            .then(response => response.json())
+            .then(result => {
+                setAccounts(result.accounts);
+            })
+            .catch(error => {
+                setErrorMessage("Impossible de charger les comptes.");
+            });
+    }, []);
+
     //Bouton qui envoie les données recuperer au back
     function handleSubmit() {
         const data = {
             amount: parseFloat(amount),
+            from_account_id : from_account_id,
             to_account_id: cleanedIBAN,
             message: message
         };
@@ -73,6 +97,15 @@ function Payment() {
                 <SearchBar_somme query={amount} setQuery={setAmount}/>
             </div>
 
+            {/* Selection du compte source */}
+            <div className="section">
+                <label className="section-label">Compte source</label>
+                <SelectAccountType_source type={from_account_id} setType={setFrom_account_id} accounts={accounts}/>
+                <p className="section-label2">
+                    Compte sélectionné : {accounts.find(acc => acc.id === parseInt(from_account_id))?.type || "Aucun"}
+                </p>
+            </div>
+
             {/* SECTION IBAN */}
             <div className="section">
                 <label className="section-label">IBAN</label>
@@ -87,8 +120,6 @@ function Payment() {
 
             {/* BOUTON */}
             <Button_Submit_Payment onClick={handleSubmit}/>
-            <Button_history_Payment onClick={() => navigate('/transaction_historic')} />
-
         </div>
     );
 }

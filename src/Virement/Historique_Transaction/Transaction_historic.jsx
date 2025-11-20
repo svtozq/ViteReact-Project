@@ -48,7 +48,7 @@ export default function Transaction_historic() {
 
     return (
         <div>
-            <h2 className="Title">Mes Virement(s)</h2>
+            <h2 className="Title">Mes Transactions</h2>
             <div className="transaction-list">
                 {transactions.map((t, index) => (
                     <div key={index} className="transaction-item"

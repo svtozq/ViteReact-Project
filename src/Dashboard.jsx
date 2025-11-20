@@ -112,7 +112,7 @@ export default function Dashboard() {
                     <button className="btn btn-blue" onClick={() => setShowModal(true)}>
                         Ouvrir un compte
                     </button>
-                    <Link to="/history" className="btn btn-gray">Voir l'historique</Link>
+                    <Link to="/transaction_historic" className="btn btn-gray">Voir l'historique</Link>
                 </div>
             </section>
 
@@ -201,7 +201,7 @@ export default function Dashboard() {
                                 <td>{acc.id}</td>
                                 <td>{acc.type}</td>
                                 <td>{acc.iban}</td>
-                                <td>{acc.balance}</td>
+                                <td>{acc.balance} €</td>
                                 <td>
                                     <div className="table-action">
                                         <Link className="btn-link" to={`/accounts/${acc.id}`}>

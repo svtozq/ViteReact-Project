@@ -25,7 +25,7 @@ function Money_deposit() {
         })
             .then(response => response.json())
             .then(result => {
-                setAccounts(result.accounts); // 👈 stocke les comptes
+                setAccounts(result.accounts);
             })
             .catch(error => {
                 setErrorMessage("Impossible de charger les comptes.");
