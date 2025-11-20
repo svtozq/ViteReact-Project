@@ -66,7 +66,7 @@ export default function Transaction_historic() {
                     </div>
                 ))}
             </div>
-            <Button_back_Payment onClick={() => navigate('/payment')} />
+            <Button_back_Payment onClick={() => navigate(-1)} />
         </div>
     );
 }

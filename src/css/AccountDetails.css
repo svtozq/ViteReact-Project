@@ -1,0 +1,49 @@
+.account-details-container {
+    max-width: 700px;
+    margin: auto;
+    padding: 20px;
+}
+
+.account-card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.btn {
+    padding: 10px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.btn-blue {
+    background: #007bff;
+    color: white;
+}
+
+.btn-green {
+    background: #28a745;
+    color: white;
+}
+
+.btn-gray {
+    background: #6c757d;
+    color: white;
+}
+
+.btn-back {
+    background: #444;
+    color: white;
+    width: fit-content;
+    padding: 10px 20px;
+}

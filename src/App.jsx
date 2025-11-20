@@ -11,6 +11,12 @@ import BeneficiaryPage from "./beneficiary/beneficiaryPage.jsx";
 import Dashboard from "./Dashboard.jsx";
 import Beneficiary_Payment from "./beneficiary/beneficiary_Payment.jsx";
 import Add_beneficiary from "./beneficiary/add_beneficiary/add_beneficiary.jsx";
+import Dashboard from "./Dashboard/Dashboard.jsx";
+import AccountDetails from "./Dashboard/AccountDetails";
+
+
+
+
 
 
 
@@ -28,6 +34,7 @@ function App() {
                 <Route path="/transaction_historic_details/:id" element={<ProtectedRoute><Transaction_historic_details/></ProtectedRoute>}/>
                 <Route path="/beneficiary" element={<ProtectedRoute><BeneficiaryPage/></ProtectedRoute>}/>
                 <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+                <Route path="/account/detail/:id" element={<AccountDetails />} />
                 <Route path="/beneficiary_Payment/:iban" element={<ProtectedRoute><Beneficiary_Payment/></ProtectedRoute>}/>
                 <Route path="/add_beneficiary" element={<ProtectedRoute><Add_beneficiary/></ProtectedRoute>}/>
             </Routes>

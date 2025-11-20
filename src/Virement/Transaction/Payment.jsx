@@ -6,6 +6,7 @@ import SearchBar_iban from "./SearchBar_iban.jsx";
 import Text_note from "./Text_note.jsx";
 import Button_history_Payment from "./Button_History_Payment.jsx";
 import { useNavigate } from 'react-router-dom';
+import html2canvas from "html2canvas";
 
 function Payment() {
     const [amount, setAmount] = useState("");
@@ -15,6 +16,13 @@ function Payment() {
     const [errorMessage, setErrorMessage] = useState("");
     const [successMessage, setSuccessMessage] = useState("");
     const navigate = useNavigate();
+    //*****   Raphael   ****
+    const [loader , setLoader ] = useState(false);
+    const downloadPDF = () =>{
+        setLoader(true);
+        html2canvas()
+    }
+    //*******
 
     // Récupération du token depuis le localStorage
     const token = localStorage.getItem("token");
@@ -88,6 +96,19 @@ function Payment() {
             {/* BOUTON */}
             <Button_Submit_Payment onClick={handleSubmit}/>
             <Button_history_Payment onClick={() => navigate('/transaction_historic')} />
+
+
+            {/*Raphael*/}
+            <button className={"receip-modal-download-button"}
+            onClick={downloadPDF}
+            disabled={!(loader===false)}>
+
+                {loader?(
+                    <span>Downloading</span>
+                ) :(
+                    <span>Download</span>
+                )}
+            </button>
 
         </div>
     );

@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import "./Dashboard.css";
+import "../css/Dashboard.css";
 
 export default function Dashboard() {
     const [accounts, setAccounts] = useState([]);
     const [user, setUser] = useState(null);
-    const [setError] = useState("");
+    const [error, setError] = useState("");
     const [showModal, setShowModal] = useState(false);
     const [loadingCreate, setLoadingCreate] = useState(false);
     const [type, setType] = useState("Compte Secondaire");
@@ -15,16 +15,27 @@ export default function Dashboard() {
 
 
     useEffect(() => {
+        console.log("Token:", localStorage.getItem("token"));
         fetch("http://127.0.0.1:8000/Bank/accounts/me", {
-            headers: { "Authorization": "Bearer " + localStorage.getItem("token") }
+            headers: { "Authorization": "Bearer " + localStorage.getItem("token"),
+                "Content-Type": "application/json"}
         })
-            .then(res => res.json())
+            .then(async res => {
+                const data = await res.json();
+                return data;
+            })
             .then(data => {
-                setUser(data.user);
-                setAccounts(data.accounts);
+                if (data.user) {
+                    setUser(data.user);
+                }
+
+                if (data.accounts) {
+                    setAccounts(data.accounts);
+                }
             })
             .catch(() => setError("Erreur serveur"));
     }, []);
+
 
     async function createNewAccount() {
         setErrorMessage("");
@@ -52,24 +63,6 @@ export default function Dashboard() {
     }
 
 
-
-    async function closeAccount(id) {
-        setErrorMessage(""); // reset erreur
-
-        setConfirmData({ id }); // ouvre le modal
-        setShowConfirm(true);
-
-        const res = await fetch(`http://127.0.0.1:8000/Bank/accounts/${id}/close`, {
-            method: "PUT",
-            headers: { "Authorization": "Bearer " + localStorage.getItem("token") }
-        });
-
-        const data = await res.json();
-
-        if (!res.ok) return alert(data.detail);
-
-        setAccounts(prev => prev.filter(acc => acc.id !== id));
-    }
 
     async function confirmCloseAccount(id) {
         setShowConfirm(false);
@@ -112,7 +105,7 @@ export default function Dashboard() {
                     <button className="btn btn-blue" onClick={() => setShowModal(true)}>
                         Ouvrir un compte
                     </button>
-                    <Link to="/history" className="btn btn-gray">Voir l'historique</Link>
+                    <Link to="/transaction_historic" className="btn btn-gray">Voir l'historique</Link>
                 </div>
             </section>
 
@@ -204,7 +197,7 @@ export default function Dashboard() {
                                 <td>{acc.balance}</td>
                                 <td>
                                     <div className="table-action">
-                                        <Link className="btn-link" to={`/accounts/${acc.id}`}>
+                                        <Link className="btn-link" to="/account/detail/${acc.id}" state={{accountId: acc.id}}>
                                             Détails
                                         </Link>
                                         <button
