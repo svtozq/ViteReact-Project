@@ -12,6 +12,8 @@ function Header() {
                     <>
                         <Link to="/dashboard">Dashboard</Link>
                         <Link to="/payment">Payment</Link>
+                        <Link to="/beneficiary">Bénéficiaires</Link>
+
                     </>
                 )}
             </nav>

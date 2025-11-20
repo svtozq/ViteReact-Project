@@ -1,7 +1,9 @@
 
-import "../beneficiary/beneficiary.css";
+import "../css/beneficiary.css";
 import { useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import Add_button_beneficiary from "./add_button_beneficiary.jsx";
+import Button_back_Payment from "../Virement/Historique_Transaction/Back_button_Payment.jsx";
 
 
 
@@ -12,6 +14,7 @@ function BeneficiaryPage() {
 
     const [errorMessage, setErrorMessage] = useState("");
     const [successMessage, setSuccessMessage] = useState("");
+    const navigate = useNavigate();
 
     //token
     const token = localStorage.getItem("token");
@@ -91,12 +94,14 @@ function BeneficiaryPage() {
                 <h1>Bénéficiaires</h1>
             </header>
 
-            <div className="beneficiary-content">
+            <div  className="beneficiary-content">
                 {beneficiary.length === 0 ? (
                     <p>Aucun bénéficiaire trouvé.</p>
                 ) : (
                     beneficiary.map(b => (
-                        <div key={b.id} className="beneficiary-item">
+                        <div key={b.id} className="beneficiary-item"
+                             onClick={() => navigate(`/beneficiary_Payment/${b.bank_account_id}`)}//Pour recuperer l'id de la transaction en question
+                             style={{ cursor: "pointer" }}>
                             {b.first_name} {b.last_name} — {b.bank_account_id} - {formatDate(b.Beneficiary_date)}
                         </div>
                     ))
@@ -107,7 +112,7 @@ function BeneficiaryPage() {
                 Total de bénéficiaires : {beneficiary.length}
             </div>
 
-            <Add_button_beneficiary onClick={BeneficiaryPage}/>
+            <Add_button_beneficiary onClick={() => navigate('/add_beneficiary')} />
 
 
         </main>

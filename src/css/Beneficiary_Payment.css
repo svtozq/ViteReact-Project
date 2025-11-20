@@ -1,0 +1,94 @@
+/* Container principal */
+.payment-container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 30px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    font-family: 'Arial', sans-serif;
+}
+
+/* Messages */
+.error-banner {
+    background-color: #f8d7da;
+    color: #842029;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.success-banner {
+    background-color: #d1e7dd;
+    color: #0f5132;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* Sections du formulaire */
+.section {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.section-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* Inputs */
+input[type="text"],
+input[type="number"],
+textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    color: black;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 60px;
+}
+
+/* IBAN non modifiable */
+.iban-display {
+    background-color: #e9ecef;
+    color: #495057;
+}
+
+/* Boutons */
+.submit-btn,
+.history-btn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn {
+    background-color: #4caf50;
+    color: white;
+}
+
+.submit-btn:hover {
+    background-color: #45a049;
+}
+
+.history-btn {
+    background-color: #007bff;
+    color: white;
+}
+
+.history-btn:hover {
+    background-color: #0069d9;
+}

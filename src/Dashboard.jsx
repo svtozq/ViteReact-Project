@@ -5,7 +5,7 @@ import "./Dashboard.css";
 export default function Dashboard() {
     const [accounts, setAccounts] = useState([]);
     const [user, setUser] = useState(null);
-    const [error, setError] = useState("");
+    const [ setError] = useState("");
     const [showModal, setShowModal] = useState(false);
     const [loadingCreate, setLoadingCreate] = useState(false);
 
