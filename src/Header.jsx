@@ -13,7 +13,7 @@ function Header() {
                         <Link to="/dashboard">Dashboard</Link>
                         <Link to="/payment">Payment</Link>
                         <Link to="/beneficiary">Bénéficiaires</Link>
-
+                        <Link to="/money_deposit">Dépôt d'argents</Link>
                     </>
                 )}
             </nav>

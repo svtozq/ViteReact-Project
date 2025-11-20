@@ -100,9 +100,9 @@ function BeneficiaryPage() {
                 ) : (
                     beneficiary.map(b => (
                         <div key={b.id} className="beneficiary-item"
-                             onClick={() => navigate(`/beneficiary_Payment/${b.bank_account_id}`)}//Pour recuperer l'id de la transaction en question
+                             onClick={() => navigate(`/beneficiary_Payment/${b.bank_account.iban}`)}//Pour recuperer l'id de la transaction en question
                              style={{ cursor: "pointer" }}>
-                            {b.first_name} {b.last_name} — {b.bank_account_id} - {formatDate(b.Beneficiary_date)}
+                            {b.first_name} {b.last_name} — {b.bank_account.iban} - {formatDate(b.Beneficiary_date)}
                         </div>
                     ))
                 )}

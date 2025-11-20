@@ -60,7 +60,9 @@ textarea {
 .iban-display {
     background-color: #e9ecef;
     color: #495057;
+    text-align: center;
 }
+
 
 /* Boutons */
 .submit-btn,
