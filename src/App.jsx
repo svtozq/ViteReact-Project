@@ -8,6 +8,7 @@ import ProtectedRoute from "./identification/TokenProtected.jsx";
 import Transaction_historic from "./Virement/Historique_Transaction/Transaction_historic.jsx";
 import Transaction_historic_details from "./Virement/Historique_Transaction/Transaction_historic_details.jsx";
 import BeneficiaryPage from "./beneficiary/beneficiaryPage.jsx";
+import Dashboard from "./Dashboard.jsx";
 
 
 
@@ -24,6 +25,7 @@ function App() {
                 <Route path="/transaction_historic" element={<ProtectedRoute><Transaction_historic/></ProtectedRoute>}/>
                 <Route path="/transaction_historic_details/:id" element={<ProtectedRoute><Transaction_historic_details/></ProtectedRoute>}/>
                 <Route path="/beneficiary" element={<ProtectedRoute><BeneficiaryPage/></ProtectedRoute>}/>
+                <Route path="/dashboard" element={<Dashboard />} />
             </Routes>
         </BrowserRouter>
     )

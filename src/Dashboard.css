@@ -1,0 +1,196 @@
+
+
+/* ------------------------------- */
+/* GLOBAL LAYOUT                   */
+/* ------------------------------- */
+
+.dashboard-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem;
+    font-family: "Inter", sans-serif;
+    color: #1f2937;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+section {
+    margin-bottom: 2.5rem;
+}
+
+/* ------------------------------- */
+/* USER CARD                       */
+/* ------------------------------- */
+
+.user-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    border: 1px solid #e5e7eb;
+}
+
+.user-card h2 {
+    margin-bottom: 0.5rem;
+    font-size: 1.4rem;
+    color: #0f172a;
+}
+
+.user-info p {
+    margin: 4px 0;
+    font-size: 1rem;
+    color: #374151;
+}
+
+/* ------------------------------- */
+/* ACTION BUTTONS (OPEN ACCOUNT, ETC.) */
+/* ------------------------------- */
+
+.actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.7rem 1.2rem;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: 0.2s;
+    font-weight: 600;
+}
+
+.btn-blue {
+    background: #3b82f6;
+    color: white;
+}
+
+.btn-blue:hover {
+    background: #2563eb;
+}
+
+.btn-gray {
+    background: #e5e7eb;
+    color: #111827;
+}
+
+.btn-gray:hover {
+    background: #d1d5db;
+}
+
+/* ------------------------------- */
+/* ACCOUNTS TABLE                  */
+/* ------------------------------- */
+
+.table-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    border: 1px solid #e5e7eb;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+thead {
+    background: #f3f4f6;
+}
+
+thead th {
+    padding: 0.8rem;
+    text-align: left;
+    font-size: 0.95rem;
+    color: #374151;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+tbody td {
+    padding: 0.8rem;
+    border-bottom: 1px solid #f1f5f9;
+    color: #1f2937;
+}
+
+/* ------------------------------- */
+/* ACTION BUTTON IN TABLE          */
+/* ------------------------------- */
+
+.table-action {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+}
+
+.btn-link {
+    color: #2563eb;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.btn-link:hover {
+    color: #1d4ed8;
+}
+
+.btn-danger {
+    padding: 0.4rem 0.8rem;
+    background: #dc2626;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.btn-danger:hover {
+    background: #b91c1c;
+}
+
+/* ------------------------------- */
+/* EMPTY STATE                     */
+/* ------------------------------- */
+
+.empty {
+    text-align: center;
+    padding: 2rem 0;
+    color: #6b7280;
+    font-size: 1rem;
+}
+
+/* ------------------------------- */
+/* RESPONSIVE                      */
+/* ------------------------------- */
+
+@media (max-width: 700px) {
+
+    table,
+    thead,
+    tbody,
+    tr,
+    th,
+    td {
+        display: block;
+    }
+
+    tr {
+        margin-bottom: 1.2rem;
+        background: #f9fafb;
+        padding: 1rem;
+        border-radius: 10px;
+    }
+
+    td {
+        border-bottom: none !important;
+    }
+}
