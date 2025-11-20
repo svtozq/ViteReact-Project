@@ -8,9 +8,11 @@ export default function AccountDetails() {
     const [error, setError] = useState("");
 
     useEffect(() => {
+        console.log("Token:", localStorage.getItem("token"));
         fetch(`http://127.0.0.1:8000/Bank/accounts/${id}`, {
             headers: {
-                "Authorization": "Bearer " + localStorage.getItem("token")
+                "Authorization": "Bearer " + localStorage.getItem("token"),
+                "Content-Type": "application/json"
             }
         })
             .then(res => res.json())

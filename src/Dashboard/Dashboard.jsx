@@ -15,8 +15,10 @@ export default function Dashboard() {
 
 
     useEffect(() => {
+        console.log("Token:", localStorage.getItem("token"));
         fetch("http://127.0.0.1:8000/Bank/accounts/me", {
-            headers: { "Authorization": "Bearer " + localStorage.getItem("token") }
+            headers: { "Authorization": "Bearer " + localStorage.getItem("token"),
+                "Content-Type": "application/json"}
         })
             .then(async res => {
                 const data = await res.json();
