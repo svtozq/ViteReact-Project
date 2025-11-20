@@ -22,7 +22,6 @@ export default function Dashboard() {
         })
             .then(async res => {
                 const data = await res.json();
-                console.log("Réponse /me :", data); // 👈 IMPORTANT
                 return data;
             })
             .then(data => {
@@ -106,7 +105,7 @@ export default function Dashboard() {
                     <button className="btn btn-blue" onClick={() => setShowModal(true)}>
                         Ouvrir un compte
                     </button>
-                    <Link to="/history" className="btn btn-gray">Voir l'historique</Link>
+                    <Link to="/transaction_historic" className="btn btn-gray">Voir l'historique</Link>
                 </div>
             </section>
 
@@ -198,7 +197,7 @@ export default function Dashboard() {
                                 <td>{acc.balance}</td>
                                 <td>
                                     <div className="table-action">
-                                        <Link className="btn-link" to={`/accounts/${acc.id}`}>
+                                        <Link className="btn-link" to="/account/detail/${acc.id}" state={{accountId: acc.id}}>
                                             Détails
                                         </Link>
                                         <button
