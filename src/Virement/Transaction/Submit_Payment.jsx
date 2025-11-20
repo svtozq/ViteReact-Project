@@ -1,4 +1,4 @@
-import './Payment.css'
+import '../../css/Payment.css'
 
 
 export default function Button_Submit_Payment({ onClick }){

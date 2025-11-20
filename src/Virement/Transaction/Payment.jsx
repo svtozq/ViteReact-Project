@@ -1,9 +1,11 @@
-import './Payment.css'
+import '../../css/Payment.css'
 import { useState } from "react";
 import Button_Submit_Payment from "./Submit_Payment.jsx";
 import SearchBar_somme from "./SearchBar.jsx";
 import SearchBar_iban from "./SearchBar_iban.jsx";
 import Text_note from "./Text_note.jsx";
+import Button_history_Payment from "./Button_History_Payment.jsx";
+import { useNavigate } from 'react-router-dom';
 
 function Payment() {
     const [amount, setAmount] = useState("");
@@ -12,7 +14,11 @@ function Payment() {
     const cleanedIBAN = toAccount.replace(/\s+/g, "");
     const [errorMessage, setErrorMessage] = useState("");
     const [successMessage, setSuccessMessage] = useState("");
+    const navigate = useNavigate();
 
+    // Récupération du token depuis le localStorage
+    const token = localStorage.getItem("token");
+    console.log("Token de connexion :", token);
 
     //Bouton qui envoie les données recuperer au back
     function handleSubmit() {
@@ -81,6 +87,7 @@ function Payment() {
 
             {/* BOUTON */}
             <Button_Submit_Payment onClick={handleSubmit}/>
+            <Button_history_Payment onClick={() => navigate('/transaction_historic')} />
 
         </div>
     );
