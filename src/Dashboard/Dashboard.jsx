@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import "./Dashboard.css";
+import "../css/Dashboard.css";
 
 export default function Dashboard() {
     const [accounts, setAccounts] = useState([]);
     const [user, setUser] = useState(null);
-    const [setError] = useState("");
+    const [error, setError] = useState("");
     const [showModal, setShowModal] = useState(false);
     const [loadingCreate, setLoadingCreate] = useState(false);
     const [type, setType] = useState("Compte Secondaire");
@@ -18,13 +18,23 @@ export default function Dashboard() {
         fetch("http://127.0.0.1:8000/Bank/accounts/me", {
             headers: { "Authorization": "Bearer " + localStorage.getItem("token") }
         })
-            .then(res => res.json())
+            .then(async res => {
+                const data = await res.json();
+                console.log("Réponse /me :", data); // 👈 IMPORTANT
+                return data;
+            })
             .then(data => {
-                setUser(data.user);
-                setAccounts(data.accounts);
+                if (data.user) {
+                    setUser(data.user);
+                }
+
+                if (data.accounts) {
+                    setAccounts(data.accounts);
+                }
             })
             .catch(() => setError("Erreur serveur"));
     }, []);
+
 
     async function createNewAccount() {
         setErrorMessage("");
@@ -52,24 +62,6 @@ export default function Dashboard() {
     }
 
 
-
-    async function closeAccount(id) {
-        setErrorMessage(""); // reset erreur
-
-        setConfirmData({ id }); // ouvre le modal
-        setShowConfirm(true);
-
-        const res = await fetch(`http://127.0.0.1:8000/Bank/accounts/${id}/close`, {
-            method: "PUT",
-            headers: { "Authorization": "Bearer " + localStorage.getItem("token") }
-        });
-
-        const data = await res.json();
-
-        if (!res.ok) return alert(data.detail);
-
-        setAccounts(prev => prev.filter(acc => acc.id !== id));
-    }
 
     async function confirmCloseAccount(id) {
         setShowConfirm(false);
@@ -126,6 +118,7 @@ export default function Dashboard() {
 
                             <div className="modal-actions">
                                 <select value={type} onChange={e => setType(e.target.value)}>
+                                    <option value="Compte Secondaire">Compte Secondaire</option>
                                     <option value="Livret A">Livret A</option>
                                     <option value="Livret B">Livret B</option>
                                     <option value="Livret Jeune">Livret Jeune</option>
