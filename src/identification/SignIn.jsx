@@ -16,7 +16,7 @@ function SignIn() {
 
     const token = localStorage.getItem("token");
     if (token) {
-        return <Navigate to="/payment" replace />;
+        return <Navigate to="/dashboard" replace />;
     }
 
     //Bouton qui envoie les données recuperer au back

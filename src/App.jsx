@@ -25,7 +25,7 @@ function App() {
                 <Route path="/transaction_historic" element={<ProtectedRoute><Transaction_historic/></ProtectedRoute>}/>
                 <Route path="/transaction_historic_details/:id" element={<ProtectedRoute><Transaction_historic_details/></ProtectedRoute>}/>
                 <Route path="/beneficiary" element={<ProtectedRoute><BeneficiaryPage/></ProtectedRoute>}/>
-                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
             </Routes>
         </BrowserRouter>
     )
