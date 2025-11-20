@@ -12,7 +12,7 @@ function LogIn() {
 
     const token = localStorage.getItem("token");
     if (token) {
-        return <Navigate to="/payment" replace />;
+        return <Navigate to="/dashboard" replace />;
     }
 
     function handleSubmit(e) {

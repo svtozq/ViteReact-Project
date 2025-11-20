@@ -27,9 +27,9 @@ function App() {
                 <Route path="/transaction_historic" element={<ProtectedRoute><Transaction_historic/></ProtectedRoute>}/>
                 <Route path="/transaction_historic_details/:id" element={<ProtectedRoute><Transaction_historic_details/></ProtectedRoute>}/>
                 <Route path="/beneficiary" element={<ProtectedRoute><BeneficiaryPage/></ProtectedRoute>}/>
+                <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
                 <Route path="/beneficiary_Payment/:iban" element={<ProtectedRoute><Beneficiary_Payment/></ProtectedRoute>}/>
                 <Route path="/add_beneficiary" element={<ProtectedRoute><Add_beneficiary/></ProtectedRoute>}/>
-                <Route path="/dashboard" element={<Dashboard />} />
             </Routes>
         </BrowserRouter>
     )
