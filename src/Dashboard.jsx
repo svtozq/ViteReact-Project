@@ -5,7 +5,9 @@ import "./Dashboard.css";
 export default function Dashboard() {
     const [accounts, setAccounts] = useState([]);
     const [user, setUser] = useState(null);
-    const [setError] = useState("");
+    const [error, setError] = useState("");
+    const [showModal, setShowModal] = useState(false);
+    const [loadingCreate, setLoadingCreate] = useState(false);
 
     useEffect(() => {
         fetch("http://127.0.0.1:8000/Bank/accounts/me", {
@@ -18,6 +20,32 @@ export default function Dashboard() {
             })
             .catch(() => setError("Erreur serveur"));
     }, []);
+
+    // 🔥 Fonction pour ouvrir un nouveau compte
+    async function createNewAccount() {
+        setLoadingCreate(true);
+
+        const res = await fetch("http://127.0.0.1:8000/Bank/accounts/", {
+            method: "POST",
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem("token"),
+            }
+        });
+
+        const data = await res.json();
+        setLoadingCreate(false);
+
+        if (!res.ok) {
+            alert(data.detail || "Impossible de créer le compte");
+            return;
+        }
+
+        // Ajoute le nouveau compte dans la liste
+        setAccounts(prev => [...prev, data]);
+
+        alert("Compte créé avec succès !");
+        setShowModal(false);
+    }
 
     async function closeAccount(id) {
         if (!window.confirm("Clôturer ce compte ?")) return;
@@ -40,6 +68,30 @@ export default function Dashboard() {
     return (
         <div className="dashboard-container">
 
+            {/* -------- Modal d’ouverture de compte -------- */}
+            {showModal && (
+                <div className="modal-overlay">
+                    <div className="modal">
+                        <h3>Ouvrir un nouveau compte bancaire</h3>
+                        <p>Confirmez-vous la création d’un compte supplémentaire ?</p>
+
+                        <div className="modal-actions">
+                            <button
+                                className="btn btn-blue"
+                                onClick={createNewAccount}
+                                disabled={loadingCreate}
+                            >
+                                {loadingCreate ? "Création..." : "Valider"}
+                            </button>
+                            <button className="btn btn-gray" onClick={() => setShowModal(false)}>
+                                Annuler
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* -------- Infos utilisateur -------- */}
             <div className="user-card">
                 <h2>Bienvenue</h2>
                 <div className="user-info">
@@ -48,14 +100,18 @@ export default function Dashboard() {
                 </div>
             </div>
 
+            {/* -------- Actions rapides -------- */}
             <section>
                 <h2>Actions rapides</h2>
                 <div className="actions">
-                    <Link to="/open-account" className="btn btn-blue">Ouvrir un compte</Link>
+                    <button className="btn btn-blue" onClick={() => setShowModal(true)}>
+                        Ouvrir un compte
+                    </button>
                     <Link to="/history" className="btn btn-gray">Voir l'historique</Link>
                 </div>
             </section>
 
+            {/* -------- Liste des comptes -------- */}
             <section className="table-card">
                 <h2>Liste des comptes</h2>
 
@@ -81,7 +137,7 @@ export default function Dashboard() {
                                 <td>
                                     <div className="table-action">
                                         <Link className="btn-link" to={`/accounts/${acc.id}`}>
-                                            Voir
+                                            Détails
                                         </Link>
                                         <button
                                             className="btn-danger"
