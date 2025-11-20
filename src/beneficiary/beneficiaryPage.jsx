@@ -1,7 +1,6 @@
 
 import "../beneficiary/beneficiary.css";
 import { useEffect, useState } from "react";
-import Button_Submit_Payment from "../Virement/Submit_Payment.jsx";
 import Add_button_beneficiary from "./add_button_beneficiary.jsx";
 import History_button_beneficiary from "./history_button_beneficiary.jsx";
 
@@ -15,7 +14,7 @@ function BeneficiaryPage() {
     const [successMessage, setSuccessMessage] = useState("");
 
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/beneficiary/my")
+        fetch("http://127.0.0.1:8000/beneficiary/")
             .then(res => {
                 if (!res.ok) {
                     return res.json().then(data => {
