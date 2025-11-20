@@ -2,7 +2,7 @@
 import "../beneficiary/beneficiary.css";
 import { useEffect, useState } from "react";
 import Add_button_beneficiary from "./add_button_beneficiary.jsx";
-import History_button_beneficiary from "./history_button_beneficiary.jsx";
+
 
 
 function BeneficiaryPage() {
@@ -13,8 +13,45 @@ function BeneficiaryPage() {
     const [errorMessage, setErrorMessage] = useState("");
     const [successMessage, setSuccessMessage] = useState("");
 
+    //token
+    const token = localStorage.getItem("token");
+    console.log("Token de connexion :", token);
+
+
+    // Pour le bon format de date
+    function formatDate(dateString) {
+        if (!dateString) return "";
+
+        // Convertit "2024-01-20 19:48:00" en "2024-01-20T19:48:00"
+        const isoString = dateString.replace(" ", "T") + "Z";
+
+        const date = new Date(isoString);
+
+        return date.toLocaleString("fr-FR", {
+            hour: "2-digit",
+            minute: "2-digit",
+            day: "2-digit",
+            month: "2-digit",
+            year: "numeric"
+        });
+    }
+
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/beneficiary/")
+
+        if (!token) {
+            // eslint-disable-next-line react-hooks/set-state-in-effect
+            setErrorMessage("utilisateur non connecté");
+            setLoading(false);
+            return;
+        }
+
+        fetch("http://127.0.0.1:8000/beneficiary/", {
+            method: "GET",
+            headers: {
+                "Authorization": "Bearer " + token,
+                "Content-Type": "application/json"
+            }
+        })
             .then(res => {
                 if (!res.ok) {
                     return res.json().then(data => {
@@ -24,8 +61,11 @@ function BeneficiaryPage() {
                 return res.json();
             })
             .then(data => {
-                setBeneficiaries(data.beneficiary || []);
-                setSuccessMessage("Bénéficiaires chargés avec succès !");
+                console.log("donnée recu");
+
+                setBeneficiaries(Array.isArray(data.beneficiaries) ? data.beneficiaries : []);
+
+                setSuccessMessage("Bénéficiaires chargés avec succès");
                 setTimeout(() => setSuccessMessage(""), 3000);
                 setLoading(false);
             })
@@ -33,10 +73,7 @@ function BeneficiaryPage() {
                 setErrorMessage(err.message || "Une erreur est survenue");
                 setLoading(false);
             });
-    }, []);
-
-
-
+    }, [token]);
 
 
     if (loading) return <p>Chargement…</p>;
@@ -60,7 +97,7 @@ function BeneficiaryPage() {
                 ) : (
                     beneficiary.map(b => (
                         <div key={b.id} className="beneficiary-item">
-                            {b.first_name} {b.last_name} — {b.iban}
+                            {b.first_name} {b.last_name} — {b.bank_account_id} - {formatDate(b.Beneficiary_date)}
                         </div>
                     ))
                 )}
@@ -72,7 +109,6 @@ function BeneficiaryPage() {
 
             <Add_button_beneficiary onClick={BeneficiaryPage}/>
 
-            <History_button_beneficiary onClick={BeneficiaryPage}/>
 
         </main>
 
