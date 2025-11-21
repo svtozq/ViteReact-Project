@@ -1,11 +1,53 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import "../css/AccountDetails.css";
-import { useLocation } from "react-router-dom";
+import { useLocation , Link } from "react-router-dom";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 
 export default function AccountDetails() {
     const [account, setAccount] = useState(null);
     const [error, setError] = useState("");
+
+
+    //*****   PDF   **************************
+
+    const [loader , setLoader ] = useState(false);
+
+    const downloadPDF = () =>{
+        const capture = document.querySelector(".account-card");
+        setLoader(true);
+
+        html2canvas(capture).then((canvas)=>{
+
+            const imgData = canvas.toDataURL("image/png");
+            const doc = new jsPDF("p","mm","a4");
+
+            const imgWidth = canvas.width;
+            const imgHeight = canvas.height;
+
+            // Taille max souhaitée dans le PDF (mm)
+            const maxWidth = 120;   // légèrement moins large que A4
+            const maxHeight = 100;  // moins haut pour éviter l’étirement
+
+            // Calcul du ratio pour garder les proportions
+            let ratio = Math.min(maxWidth / imgWidth, maxHeight / imgHeight);
+
+            const displayWidth = imgWidth * ratio;
+            const displayHeight = imgHeight * ratio;
+
+            // Centrer l'image
+            const marginX = (doc.internal.pageSize.getWidth() - displayWidth) / 2;
+            const marginY = 20; // marge en haut
+
+            doc.addImage(imgData, "PNG", marginX, marginY, displayWidth, displayHeight);
+            setLoader(false);
+            doc.save("Relevé_de_compte.pdf")
+
+        })
+    }
+    //*******************************
+
+
     const location = useLocation();
     const accountId = location.state?.accountId;
 
@@ -61,6 +103,18 @@ export default function AccountDetails() {
             <Link className="btn btn-back" to="/dashboard">
                 Retour au dashboard
             </Link>
+
+            {/*PDF*/}
+            <button className={"receip-modal-download-button"}
+                    onClick={downloadPDF}
+                    disabled={!(loader===false)}>
+
+                {loader?(
+                    <span>Downloading</span>
+                ) :(
+                    <span>Download</span>
+                )}
+            </button>
         </div>
     );
 }

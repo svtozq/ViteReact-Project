@@ -8,11 +8,11 @@ import ProtectedRoute from "./identification/TokenProtected.jsx";
 import Transaction_historic from "./Virement/Historique_Transaction/Transaction_historic.jsx";
 import Transaction_historic_details from "./Virement/Historique_Transaction/Transaction_historic_details.jsx";
 import BeneficiaryPage from "./beneficiary/beneficiaryPage.jsx";
-import Dashboard from "./Dashboard.jsx";
+import Dashboard from "./Dashboard/Dashboard.jsx";
 import Beneficiary_Payment from "./beneficiary/beneficiary_Payment.jsx";
 import Add_beneficiary from "./beneficiary/add_beneficiary/add_beneficiary.jsx";
-import Dashboard from "./Dashboard/Dashboard.jsx";
 import AccountDetails from "./Dashboard/AccountDetails";
+
 
 
 
