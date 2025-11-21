@@ -1,5 +1,5 @@
 import '../css/beneficiary.css'
 
 export default function Add_button_beneficiary({ onClick }){
-    return <button className="add_button_beneficiary" onClick={onClick}> Ajouter </button>;
+    return <button className="add_button_beneficiary btn-green" onClick={onClick}> Ajouter </button>;
 }

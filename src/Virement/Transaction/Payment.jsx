@@ -7,7 +7,6 @@ import Text_note from "./Text_note.jsx";
 import Button_history_Payment from "./Button_History_Payment.jsx";
 import { useNavigate } from 'react-router-dom';
 import SelectAccountType_source from "../Depot_argent/Select_depot_source.jsx";
-import html2canvas from "html2canvas";
 
 function Payment() {
     const [errorMessage, setErrorMessage] = useState("");
@@ -20,13 +19,6 @@ function Payment() {
     const cleanedIBAN = toAccount.replace(/\s+/g, "");
     const [accounts, setAccounts] = useState([]);
     const navigate = useNavigate();
-    //*****   Raphael   ****
-    const [loader , setLoader ] = useState(false);
-    const downloadPDF = () =>{
-        setLoader(true);
-        html2canvas()
-    }
-    //*******
 
     // Récupération du token depuis le localStorage
     const token = localStorage.getItem("token");
@@ -47,7 +39,7 @@ function Payment() {
                 setAccounts(result.accounts);
             })
             .catch(error => {
-                setErrorMessage("Impossible de charger les comptes.");
+                setErrorMessage(error.message);
             });
     }, []);
 
@@ -55,7 +47,6 @@ function Payment() {
     function handleSubmit() {
         const data = {
             amount: parseFloat(amount),
-            from_account_id : from_account_id,
             to_account_id: cleanedIBAN,
             message: message
         };
@@ -94,16 +85,16 @@ function Payment() {
 
     return (
         <div className="payment-container">
-
+            <h2 className="Title">Mes Virements</h2>
             {/* Gestion des erreurs */}
             {errorMessage && <div className="error-banner">{errorMessage}</div>} {/* Bannière */}
             {successMessage && <div className="success-banner">{successMessage}</div>} {/* Message succès */}
 
-            {/* SECTION SOMME */}
-            <div className="section">
-                <label className="section-label">Somme</label>
-                <SearchBar_somme query={amount} setQuery={setAmount}/>
-            </div>
+                {/* SECTION SOMME */}
+                <div className="section">
+                    <h2 className="section-label">Somme</h2>
+                    <SearchBar_somme query={amount} setQuery={setAmount}/>
+                </div>
 
             {/* Selection du compte source */}
             <div className="section">
@@ -116,32 +107,19 @@ function Payment() {
 
             {/* SECTION IBAN */}
             <div className="section">
-                <label className="section-label">IBAN</label>
+                <h2 className="section-label">IBAN</h2>
                 <SearchBar_iban query={toAccount} setQuery={setToAccount}/>
             </div>
 
-            {/* SECTION NOTE */}
-            <div className="section">
-                <label className="section-label">Note</label>
-                <Text_note query={message} setQuery={setMessage}/>
-            </div>
+                {/* SECTION NOTE */}
+                <div className="section">
+                    <h2 className="section-label">Note</h2>
+                    <Text_note query={message} setQuery={setMessage}/>
+                </div>
 
             {/* BOUTON */}
             <Button_Submit_Payment onClick={handleSubmit}/>
             <Button_history_Payment onClick={() => navigate('/transaction_historic')} />
-
-
-            {/*Raphael*/}
-            <button className={"receip-modal-download-button"}
-            onClick={downloadPDF}
-            disabled={!(loader===false)}>
-
-                {loader?(
-                    <span>Downloading</span>
-                ) :(
-                    <span>Download</span>
-                )}
-            </button>
 
         </div>
     );

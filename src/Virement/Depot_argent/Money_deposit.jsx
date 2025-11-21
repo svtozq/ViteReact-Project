@@ -28,7 +28,7 @@ function Money_deposit() {
                 setAccounts(result.accounts);
             })
             .catch(error => {
-                setErrorMessage("Impossible de charger les comptes.");
+                setErrorMessage(error.message);
             });
     }, []);
 
@@ -73,6 +73,7 @@ function Money_deposit() {
 
 
     return (
+        <div className="payment-container">
         <div>
 
             {/* Gestion des erreurs */}
@@ -107,6 +108,7 @@ function Money_deposit() {
 
             {/* BOUTON */}
             <Button_Submit_Payment onClick={handleSubmit}/>
+        </div>
         </div>
     );
 }

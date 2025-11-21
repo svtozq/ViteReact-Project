@@ -56,7 +56,7 @@ function SignIn() {
 
     return (
         <>
-            <div>
+            <div className="signInClass">
                 <div className="form-group">
                 <form>
                     <h2>Sign In</h2>

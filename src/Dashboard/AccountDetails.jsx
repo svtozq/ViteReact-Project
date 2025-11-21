@@ -87,20 +87,20 @@ export default function AccountDetails() {
             </div>
 
             <div className="actions">
-                <Link className="btn btn-blue" to={`/deposit/${accountId}`}>
+                <Link className="btn btn-blue" to={"/money_deposit"}>
                     Faire un dépôt
                 </Link>
 
-                <Link className="btn btn-green" to={`/transfer/${accountId}`}>
+                <Link className="btn btn-green" to={"/payment"}>
                     Faire un virement
                 </Link>
 
-                <Link className="btn btn-gray" to={`/history/${accountId}`}>
+                <Link className="btn btn-gray" to={`/transaction_historic`}>
                     Voir l'historique
                 </Link>
             </div>
 
-            <Link className="btn btn-back" to="/dashboard">
+            <Link className="btn btn-danger" to="/dashboard">
                 Retour au dashboard
             </Link>
 

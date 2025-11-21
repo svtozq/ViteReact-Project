@@ -51,12 +51,25 @@ button {
     margin: 10px;
 }
 
+.signInClass {
+    padding: 30px;
+    border: white solid 1px ;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #4192f1, #000000, #a9ccff);
+    box-shadow: 10px 10px 20px rgba(0,0,0,0.75);
+    background-size: 200% 200%;
+    animation: breathe 12s ease infinite;
+}
+button:hover {
+    background: linear-gradient(135deg, #4192f1, #000000, #a9ccff);
+}
+
 a:hover {
     color: #fff;
 }
 
 .error-message {
-    background: #fee2e2; /* light red */
+    background: linear-gradient(135deg, #4192f1, #000000, #a9ccff);
     color: #b91c1c;      /* dark red text */
     border: 1px solid #fca5a5;
     padding: 12px 15px;

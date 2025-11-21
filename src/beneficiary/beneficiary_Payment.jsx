@@ -32,7 +32,7 @@ function Beneficiary_Payment() {
                 setAccounts(result.accounts);
             })
             .catch(error => {
-                setErrorMessage("Impossible de charger les comptes.");
+                setErrorMessage(error.message);
             });
     }, []);
 

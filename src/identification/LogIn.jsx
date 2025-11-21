@@ -49,6 +49,7 @@ function LogIn() {
     }
 
     return (
+        <div className="logInClass">
         <div className="form-group">
             <form onSubmit={handleSubmit}>
                 <h2>Log In</h2>
@@ -61,6 +62,8 @@ function LogIn() {
                 <a href="/signin">Vous n'avez pas de compte ?</a>
             </form>
         </div>
+        </div>
+
     );
 }
 
