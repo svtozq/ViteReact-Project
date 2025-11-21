@@ -11,6 +11,7 @@ import BeneficiaryPage from "./beneficiary/beneficiaryPage.jsx";
 import Dashboard from "./Dashboard/Dashboard.jsx";
 import Beneficiary_Payment from "./beneficiary/beneficiary_Payment.jsx";
 import Add_beneficiary from "./beneficiary/add_beneficiary/add_beneficiary.jsx";
+import Money_deposit from "./Virement/Depot_argent/Money_deposit.jsx";
 import AccountDetails from "./Dashboard/AccountDetails";
 
 
@@ -37,6 +38,7 @@ function App() {
                 <Route path="/account/detail/:id" element={<AccountDetails />} />
                 <Route path="/beneficiary_Payment/:iban" element={<ProtectedRoute><Beneficiary_Payment/></ProtectedRoute>}/>
                 <Route path="/add_beneficiary" element={<ProtectedRoute><Add_beneficiary/></ProtectedRoute>}/>
+                <Route path="/money_deposit" element={<ProtectedRoute><Money_deposit/></ProtectedRoute>}/>
             </Routes>
         </BrowserRouter>
     )

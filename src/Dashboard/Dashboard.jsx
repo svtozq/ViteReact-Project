@@ -194,7 +194,7 @@ export default function Dashboard() {
                                 <td>{acc.id}</td>
                                 <td>{acc.type}</td>
                                 <td>{acc.iban}</td>
-                                <td>{acc.balance}</td>
+                                <td>{acc.balance} €</td>
                                 <td>
                                     <div className="table-action">
                                         <Link className="btn-link" to="/account/detail/${acc.id}" state={{accountId: acc.id}}>

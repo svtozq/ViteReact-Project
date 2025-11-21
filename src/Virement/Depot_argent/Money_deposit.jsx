@@ -1,38 +1,19 @@
-import '../../css/Payment.css'
-import {useEffect, useState} from "react";
-import Button_Submit_Payment from "./Submit_Payment.jsx";
-import SearchBar_somme from "./SearchBar.jsx";
-import SearchBar_iban from "./SearchBar_iban.jsx";
-import Text_note from "./Text_note.jsx";
-import Button_history_Payment from "./Button_History_Payment.jsx";
-import { useNavigate } from 'react-router-dom';
-import SelectAccountType_source from "../Depot_argent/Select_depot_source.jsx";
-import html2canvas from "html2canvas";
+import '../../css/Money_deposit.css'
+import Button_Submit_Payment from "../Transaction/Submit_Payment.jsx";
+import {useEffect,useState} from "react";
+import SelectAccountType_source from "./Select_depot_source.jsx";
+import SearchBar_somme from "../Transaction/SearchBar.jsx";
+import SelectAccountType_destination from "./Select_depot_destination.jsx";
 
-function Payment() {
+
+function Money_deposit() {
     const [errorMessage, setErrorMessage] = useState("");
     const [successMessage, setSuccessMessage] = useState("");
 
     const [amount, setAmount] = useState("");
     const [from_account_id, setFrom_account_id] = useState("");
-    const [toAccount, setToAccount] = useState("");
-    const [message, setMessage] = useState("");
-    const cleanedIBAN = toAccount.replace(/\s+/g, "");
+    const [to_account_id, setTo_account_id] = useState("");
     const [accounts, setAccounts] = useState([]);
-    const navigate = useNavigate();
-    //*****   Raphael   ****
-    const [loader , setLoader ] = useState(false);
-    const downloadPDF = () =>{
-        setLoader(true);
-        html2canvas()
-    }
-    //*******
-
-    // Récupération du token depuis le localStorage
-    const token = localStorage.getItem("token");
-    console.log("Token de connexion :", token);
-
-
 
     // Charger les comptes de l'utilisateur connecté
     useEffect(() => {
@@ -55,14 +36,12 @@ function Payment() {
     function handleSubmit() {
         const data = {
             amount: parseFloat(amount),
-            from_account_id : from_account_id,
-            to_account_id: cleanedIBAN,
-            message: message
+            from_account_id: parseInt(from_account_id),
+            to_account_id: parseInt(to_account_id),
         };
 
-        console.log("IBAN envoyé au back :", toAccount);
 
-        fetch("http://127.0.0.1:8000/transactions/", {
+        fetch("http://127.0.0.1:8000/transactions/add-money", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -92,8 +71,9 @@ function Payment() {
             });
     }
 
+
     return (
-        <div className="payment-container">
+        <div>
 
             {/* Gestion des erreurs */}
             {errorMessage && <div className="error-banner">{errorMessage}</div>} {/* Bannière */}
@@ -105,6 +85,7 @@ function Payment() {
                 <SearchBar_somme query={amount} setQuery={setAmount}/>
             </div>
 
+
             {/* Selection du compte source */}
             <div className="section">
                 <label className="section-label">Compte source</label>
@@ -114,38 +95,21 @@ function Payment() {
                 </p>
             </div>
 
-            {/* SECTION IBAN */}
-            <div className="section">
-                <label className="section-label">IBAN</label>
-                <SearchBar_iban query={toAccount} setQuery={setToAccount}/>
-            </div>
 
-            {/* SECTION NOTE */}
+            {/* Selection du compte destinataire */}
             <div className="section">
-                <label className="section-label">Note</label>
-                <Text_note query={message} setQuery={setMessage}/>
+                <label className="section-label">Compte Destinataire</label>
+                <SelectAccountType_destination type={to_account_id} setType={setTo_account_id} accounts={accounts}/>
+                <p className="section-label2">
+                    Compte sélectionné : {accounts.find(acc => acc.id === parseInt(to_account_id))?.type || "Aucun"}
+                </p>
             </div>
 
             {/* BOUTON */}
             <Button_Submit_Payment onClick={handleSubmit}/>
-            <Button_history_Payment onClick={() => navigate('/transaction_historic')} />
-
-
-            {/*Raphael*/}
-            <button className={"receip-modal-download-button"}
-            onClick={downloadPDF}
-            disabled={!(loader===false)}>
-
-                {loader?(
-                    <span>Downloading</span>
-                ) :(
-                    <span>Download</span>
-                )}
-            </button>
-
         </div>
     );
 }
 
 
-export default Payment;
+export default Money_deposit;
