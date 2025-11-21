@@ -62,33 +62,35 @@ function Payment() {
 
     return (
         <div className="payment-container">
-
+            <h2 className="Title">Mes Virements</h2>
             {/* Gestion des erreurs */}
             {errorMessage && <div className="error-banner">{errorMessage}</div>} {/* Bannière */}
             {successMessage && <div className="success-banner">{successMessage}</div>} {/* Message succès */}
 
-            {/* SECTION SOMME */}
-            <div className="section">
-                <label className="section-label">Somme</label>
-                <SearchBar_somme query={amount} setQuery={setAmount}/>
+            <div className="payment-content">
+                {/* SECTION SOMME */}
+                <div className="section">
+                    <h2 className="section-label">Somme</h2>
+                    <SearchBar_somme query={amount} setQuery={setAmount}/>
+                </div>
+
+                {/* SECTION IBAN */}
+                <div className="section">
+                    <h2 className="section-label">IBAN</h2>
+                    <SearchBar_iban query={toAccount} setQuery={setToAccount}/>
+                </div>
+
+                {/* SECTION NOTE */}
+                <div className="section">
+                    <h2 className="section-label">Note</h2>
+                    <Text_note query={message} setQuery={setMessage}/>
+                </div>
+
+                {/* BOUTON */}
+                <Button_Submit_Payment onClick={handleSubmit}/>
+                <Button_history_Payment onClick={() => navigate('/transaction_historic')} />
+
             </div>
-
-            {/* SECTION IBAN */}
-            <div className="section">
-                <label className="section-label">IBAN</label>
-                <SearchBar_iban query={toAccount} setQuery={setToAccount}/>
-            </div>
-
-            {/* SECTION NOTE */}
-            <div className="section">
-                <label className="section-label">Note</label>
-                <Text_note query={message} setQuery={setMessage}/>
-            </div>
-
-            {/* BOUTON */}
-            <Button_Submit_Payment onClick={handleSubmit}/>
-            <Button_history_Payment onClick={() => navigate('/transaction_historic')} />
-
         </div>
     );
 }

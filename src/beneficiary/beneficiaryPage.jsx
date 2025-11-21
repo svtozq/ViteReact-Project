@@ -1,5 +1,5 @@
 
-import "../beneficiary/beneficiary.css";
+import "../css/beneficiary.css";
 import { useEffect, useState } from "react";
 import Add_button_beneficiary from "./add_button_beneficiary.jsx";
 
@@ -83,14 +83,13 @@ function BeneficiaryPage() {
 
         <main className="beneficiaries-page">
 
-
+            <h2 className="Title">Mes Bénéficiaires</h2>
             {errorMessage && <div className="error-banner">{errorMessage}</div>}
             {successMessage && <div className="success-banner">{successMessage}</div>}
 
-            <header className="beneficiaries-header">
+            {/* <header className="beneficiaries-header">
                 <h1>Bénéficiaires</h1>
-            </header>
-
+            </header>*/}
             <div className="beneficiary-content">
                 {beneficiary.length === 0 ? (
                     <p>Aucun bénéficiaire trouvé.</p>

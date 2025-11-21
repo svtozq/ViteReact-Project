@@ -52,11 +52,16 @@ button {
     margin: 10px;
 }
 
+button:hover {
+    background: linear-gradient(135deg, #4192f1, #000000, #a9ccff);
+}
+
 a:hover {
     color: #fff;
 }
 
 .error-message {
+    background: linear-gradient(135deg, #4192f1, #000000, #a9ccff);
     background: #fee2e2; /* light red */
     color: #b91c1c;      /* dark red text */
     border: 1px solid #fca5a5;

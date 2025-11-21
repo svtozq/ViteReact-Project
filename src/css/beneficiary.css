@@ -1,31 +1,55 @@
+body, #root {
+    padding-top: 70px; /* = hauteur du header */
+}
+
 /* ---- CONTAINER PRINCIPAL ---- */
 .beneficiaries-page {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 100%;
+    align-items: center;       /* centre horizontalement tous les enfants */
+    justify-content: flex-start; /* aligne verticalement depuis le top */
+    width: 100%;               /* prend toute la largeur de la page */
     min-height: 100vh;
     padding: 20px;
-    background: #f7f8fa;
+              /* espace sous le header */
+    background: linear-gradient(135deg, #4192f1, #000000, #a9ccff);
+    border: white solid 1px ;
     box-sizing: border-box;
+    border-radius: 30px;
+    animation: breathe 12s ease infinite;
+}
+
+@keyframes breathe {
+    0% { background-position: 0 0; }
+    50% { background-position: 100% 100%; }
+    100% { background-position: 0 0; }
 }
 
 /* ---- TITRE ---- */
 .beneficiaries-header {
-    width: 80%;
+    width: 60%;
     padding: 15px;
-    margin-top: 20px;
-    margin-bottom: 30px;
-
+    margin: 100px auto 20px auto; /* top auto bottom auto pour centrer horizontalement */
     text-align: center;
     font-size: 1.8rem;
     font-weight: bold;
     color: #222;
+    text-shadow: 0 0 8px rgb(255, 255, 255);
 
     border: 2px solid #3b82f6;
     border-radius: 10px;
     background: white;
     box-shadow: 0 3px 5px rgba(0,0,0,0.1);
+}
+
+/* Titre de section */
+.Title {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-size: 28px;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgb(65, 146, 241);
 }
 
 
@@ -35,11 +59,12 @@
     min-height: 250px;
     max-height: 400px;
     overflow-y: auto;
+    overflow-x: hidden;
 
     padding: 20px;
     margin-bottom: 20px;
 
-    background: white;
+    background: #a9ccff;
     border: 2px solid #ddd;
     border-radius: 10px;
     box-shadow: 0 3px 5px rgba(0,0,0,0.05);
@@ -47,6 +72,10 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+
+.beneficiary-content::-webkit-scrollbar {
+    display: none;
 }
 
 .beneficiary-item {
@@ -62,7 +91,8 @@
     font-size: 1.2rem;
     margin-bottom: 30px;
     font-weight: bold;
-    color: #333;
+    color: #ffffff;
+    text-shadow: 0 0 8px rgb(255, 255, 255);
 }
 
 
@@ -71,6 +101,10 @@
     display: flex;
     gap: 20px;
     margin-top: 10px;
+    font-size: 18px;
+    padding: 12px 30px;
+    font-weight: 600;
+    transition: 0.25s ease;
 }
 
 .add-btn, .history-btn {
@@ -78,7 +112,7 @@
     border: none;
     border-radius: 10px;
 
-    font-size: 1.1rem;
+    font-size: 18px;
     font-weight: bold;
     cursor: pointer;
 
@@ -90,7 +124,7 @@
 
 .add-btn:hover,
 .history-btn:hover {
-    background: #2563eb;
+    background: linear-gradient(135deg, #4192f1, #000000, #a9ccff);
 }
 
 /* Bannières d'erreurs et succès */
@@ -108,8 +142,10 @@
     width: 80%;
     padding: 12px;
     margin-bottom: 15px;
-    background: #4caf50;
-    color: white;
+    background: #a9ccff;
+    color: #ffffff;
+    text-shadow: 0 0 8px rgb(255, 255, 255);
+    font-size: 15px;
     border-radius: 6px;
     text-align: center;
 }

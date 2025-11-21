@@ -1,250 +1,240 @@
+/* ====== BACKGROUND GLOBAL ====== */
+body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(135deg, #4192f1, #000000, #a9ccff);
+    color: #000000;
+}
 
-
-/* ------------------------------- */
-/* GLOBAL LAYOUT                   */
-/* ------------------------------- */
-
+/* Neon green soft glow */
 .dashboard-container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 2rem;
-    font-family: "Inter", sans-serif;
-    color: #1f2937;
+    padding: 30px;
+    min-height: 100vh;
+    border: white solid 1px ;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #4192f1, #000000, #a9ccff);
+    background-size: 200% 200%;
+    animation: breathe 12s ease infinite;
 }
 
-h1 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    font-weight: 700;
-    color: #0f172a;
+@keyframes breathe {
+    0% { background-position: 0 0; }
+    50% { background-position: 100% 100%; }
+    100% { background-position: 0 0; }
 }
 
-section {
-    margin-bottom: 2.5rem;
+/* ====== TITRES ====== */
+h2 {
+    color: #ffffff;
+    text-shadow: 0 0 8px rgb(255, 255, 255);
 }
 
-/* ------------------------------- */
-/* USER CARD                       */
-/* ------------------------------- */
-
-.user-card {
-    background: #ffffff;
-    border-radius: 14px;
-    padding: 1.5rem 2rem;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    border: 1px solid #e5e7eb;
+section h2 {
+    text-align: center;
+    margin-bottom: 15px;
+    text-shadow: 0 0 8px rgb(255, 255, 255);
 }
-
-.user-card h2 {
-    margin-bottom: 0.5rem;
-    font-size: 1.4rem;
-    color: #0f172a;
-}
-
-.user-info p {
-    margin: 4px 0;
-    font-size: 1rem;
-    color: #374151;
-}
-
-/* ------------------------------- */
-/* ACTION BUTTONS (OPEN ACCOUNT, ETC.) */
-/* ------------------------------- */
 
 .actions {
     display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
+    justify-content: center;   /* centre horizontalement */
+    align-items: center;        /* centre verticalement si plusieurs lignes */
+    gap: 20px;                  /* espace entre les deux boutons */
+    margin-top: 10px;
 }
 
+
+/* ====== USER CARD ====== */
+.user-card {
+    background: linear-gradient(135deg, #4192f1, #000000, #a9ccff);
+    color: #ffffff;
+    border: 1px solid rgb(255, 255, 255);
+    padding: 20px;
+    border-radius: 14px;
+    box-shadow: 0 0 12px rgb(138, 184, 236);
+    margin-bottom: 30px;
+}
+
+.user-card h2 {
+    text-align: center;
+    color: #ffffff;
+}
+
+.user-info p strong, .user-info p {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+p {
+    color: rgba(0, 0, 0, 0.8);
+}
+
+/* ====== BUTTONS ====== */
 .btn {
-    display: inline-block;
-    padding: 0.7rem 1.2rem;
+    padding: 12px 30px;
     border-radius: 10px;
-    font-size: 0.95rem;
-    text-decoration: none;
-    transition: 0.2s;
-    font-weight: 600;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.25s ease;
+    border: none;
 }
 
 .btn-blue {
-    background: #3b82f6;
-    color: white;
+    background: linear-gradient(135deg, #4192f1, #000000, #a9ccff);
+    color: black;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
 }
 
 .btn-blue:hover {
-    background: #2563eb;
+    background: linear-gradient(135deg, #4192f1, #000000, #a9ccff);
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.9);
 }
 
 .btn-gray {
-    background: #e5e7eb;
-    color: #111827;
+    background: linear-gradient(135deg, #4192f1, #000000, #a9ccff);
+    color: white;
 }
 
 .btn-gray:hover {
-    background: #d1d5db;
-}
-
-/* ------------------------------- */
-/* ACCOUNTS TABLE                  */
-/* ------------------------------- */
-
-.table-card {
-    background: #ffffff;
-    border-radius: 12px;
-    padding: 1.5rem;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    border: 1px solid #e5e7eb;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 1rem;
-}
-
-thead {
-    background: #f3f4f6;
-}
-
-thead th {
-    padding: 0.8rem;
-    text-align: left;
-    font-size: 0.95rem;
-    color: #374151;
-    border-bottom: 1px solid #e5e7eb;
-}
-
-tbody td {
-    padding: 0.8rem;
-    border-bottom: 1px solid #f1f5f9;
-    color: #1f2937;
-}
-
-/* ------------------------------- */
-/* ACTION BUTTON IN TABLE          */
-/* ------------------------------- */
-
-.table-action {
-    display: flex;
-    align-items: center;
-    gap: 0.7rem;
-}
-
-.btn-link {
-    color: #2563eb;
-    font-weight: 600;
-    text-decoration: none;
-    transition: 0.2s;
-}
-
-.btn-link:hover {
-    color: #1d4ed8;
+    background: linear-gradient(135deg, #4192f1, #000000, #a9ccff);
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.9);
 }
 
 .btn-danger {
-    padding: 0.4rem 0.8rem;
-    background: #dc2626;
+    background: #c62828;
     color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: 0.2s;
 }
 
 .btn-danger:hover {
-    background: #b91c1c;
+    background: linear-gradient(135deg, #4192f1, #000000, #a9ccff);
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.9);
 }
 
-/* ------------------------------- */
-/* EMPTY STATE                     */
-/* ------------------------------- */
-
-.empty {
-    text-align: center;
-    padding: 2rem 0;
-    color: #6b7280;
-    font-size: 1rem;
+/* ====== TABLE CARD ====== */
+.table-card {
+    background: linear-gradient(135deg, #4192f1, #ffffff, #a9ccff);
+    padding: 25px;
+    border-radius: 16px;
+    border: 1px solid rgb(255, 255, 255);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(6px);
+    margin-top: 30px;
 }
 
-/* ------------------------------- */
-/* RESPONSIVE                      */
-/* ------------------------------- */
-
-@media (max-width: 700px) {
-
-    table,
-    thead,
-    tbody,
-    tr,
-    th,
-    td {
-        display: block;
-    }
-
-    tr {
-        margin-bottom: 1.2rem;
-        background: #f9fafb;
-        padding: 1rem;
-        border-radius: 10px;
-    }
-
-    td {
-        border-bottom: none !important;
-    }
-
-
-
-
-
-
-    /* --- Modal overlay --- */
-    .modal-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0,0,0,0.5);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 999;
-    }
-
-    /* --- Fenêtre du modal --- */
-    .modal {
-        background: white;
-        padding: 2rem;
-        border-radius: 12px;
-        width: 350px;
-        max-width: 90%;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-        text-align: center;
-    }
-
-    /* Actions */
-    .modal-actions {
-        display: flex;
-        justify-content: center;
-        gap: 1rem;
-        margin-top: 1.5rem;
-    }
-
+/* Conteneur de table */
+.table-card {
+    padding: 20px;
+    background: rgba(20, 20, 20, 0.7);
+    border-radius: 12px;
+    backdrop-filter: blur(5px);
+    margin-top: 20px;
 }
 
-.error-message {
-    background: #fee2e2; /* light red */
-    color: #b91c1c;      /* dark red text */
-    border: 1px solid #fca5a5;
-    padding: 12px 15px;
-    border-radius: 6px;
-    margin-top: 15px;
+.table-card h2 {
+    color: #ffffff;
+    text-shadow: 0 0 8px rgb(255, 255, 255);
+}
 
-    font-size: 14px;
-    font-weight: 500;
+/* Table */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;     /* espace entre les lignes */
+    font-size: 16px;
+}
 
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    animation: fadeIn 0.3s ease-in-out;
+/* En-tête */
+th {
+    text-align: left;
+    padding: 14px 18px;
+    background: rgba(0, 0, 0, 0.4);
+    color: #ffffff;
+    text-shadow: 0 0 8px rgb(255, 255, 255);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.33);
+}
+
+/* Lignes */
+tbody tr {
+    background: rgba(255, 255, 255, 0.03);
+    transition: 0.2s;
+}
+
+/* Hover doux */
+tbody tr:hover {
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+}
+
+/* Cellules */
+td {
+    padding: 14px 18px;
+    color: #eee;
+    vertical-align: middle;
+}
+
+/* Pour maintenir un alignement équidistant */
+th, td {
+    text-align: center;      /* centrage uniforme */
+}
+
+/* Première colonne un peu moins large */
+td:first-child, th:first-child {
+    width: 80px;
+}
+
+/* Dernière colonne largeur fixe */
+td:last-child, th:last-child {
+    width: 180px;
+}
+
+
+/* ====== LINK ====== */
+.btn-link {
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: bold;
+    text-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
+.btn-link:hover {
+    color: #007aff;
+}
+
+/* ====== MODAL ====== */
+.modal-overlay {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal h3, p {
+    color: #ffffff;
+    text-shadow: 0 0 8px rgb(255, 255, 255);
+}
+
+.modal {
+    background: transparent;
+    border-radius: 16px;
+    padding: 25px;
+    width: 350px;
+}
+
+/* ====== SELECT ====== */
+select {
+    background: transparent;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid rgb(65, 146, 241);
+    color: #000000;
+    width: 100%;
+    margin-bottom: 15px;
 }

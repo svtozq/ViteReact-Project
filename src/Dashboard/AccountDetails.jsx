@@ -53,12 +53,12 @@ export default function AccountDetails() {
                     Faire un virement
                 </Link>
 
-                <Link className="btn btn-gray" to={`/history/${accountId}`}>
+                <Link className="btn btn-gray" to={`/transaction_historic`}>
                     Voir l'historique
                 </Link>
             </div>
 
-            <Link className="btn btn-back" to="/dashboard">
+            <Link className="btn btn-danger" to="/dashboard">
                 Retour au dashboard
             </Link>
         </div>

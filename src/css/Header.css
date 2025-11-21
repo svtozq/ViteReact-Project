@@ -1,75 +1,71 @@
-.app-header {
-    width: 100%;
-    height: 70px;
-    background: #111827;  /* dark navy */
-    color: white;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    padding: 0 30px;
-    box-sizing: border-box;
-
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    position: sticky;
+/* ===================== */
+/*        HEADER         */
+/* ===================== */
+header {
+    position: fixed;              /* Colle le header en haut */
     top: 0;
-    z-index: 100;
-}
+    left: 0;
+    width: 100%;                  /* Prend toute la largeur */
+    box-sizing: border-box;
+    padding: 15px 30px;
 
-/* Logo */
-.logo {
-    font-size: 24px;
-    font-weight: 700;
-    margin: 0;
-}
+    background: rgba(0, 0, 0, 0.55);  /* Fond transparent + sombre */
+    backdrop-filter: blur(12px);      /* Effet glassmorphism */
+    border-bottom: 1px solid rgb(0, 0, 0); /* Néon vert doux */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 
-/* Navigation */
-.nav-links {
     display: flex;
-    gap: 25px;
+    justify-content: space-between;
+    align-items: center;
+
+    z-index: 1000;
 }
 
-.nav-links a {
-    color: #d1d5db;
+
+/* --------------------- */
+/*        NAV LINKS      */
+/* --------------------- */
+
+header nav {
+    display: flex;
+    gap: 20px;
+}
+
+header nav a {
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 18px;
     text-decoration: none;
-    font-size: 16px;
-    font-weight: 500;
-
-    transition: color 0.2s;
+    transition: 0.25s ease;
+    text-shadow: 0 0 8px rgb(255, 255, 255);
 }
 
-.nav-links a:hover {
-    color: white;
+header nav a:hover {
+    text-shadow: 0 0 8px #4192f1;  /* Glow vert néon */
+    transform: translateY(-1px);
 }
 
-/* Logout button */
-.logout-btn {
-    background: #ef4444;
-    border: none;
-    padding: 8px 18px;
-    border-radius: 6px;
-    color: white;
-    font-size: 15px;
+
+/* --------------------- */
+/*     LOGOUT BUTTON     */
+/* --------------------- */
+
+header button {
+    margin-left: 15px;
+    background: transparent;
+    color: #ffffff;
+    border: 1px solid rgb(65, 146, 241);
+    padding: 8px 14px;
+    border-radius: 10px;
+
     cursor: pointer;
-    transition: background 0.2s, transform 0.1s;
+    font-weight: 600;
+    transition: 0.25s ease;
+    text-shadow: 0 0 8px rgb(255, 255, 255);
 }
 
-.logout-btn:hover {
-    background: #dc2626;
-}
-
-.logout-btn:active {
-    transform: scale(0.97);
-}
-
-/* Mobile */
-@media (max-width: 600px) {
-    .nav-links {
-        display: none;
-    }
-
-    .logo {
-        font-size: 20px;
-    }
+header button:hover {
+    background: rgb(65, 146, 241);
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.45);
+    transform: translateY(-1px);
 }

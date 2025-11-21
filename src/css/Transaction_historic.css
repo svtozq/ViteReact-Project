@@ -1,5 +1,6 @@
 .Title{
     text-align: center;
+    text-shadow: 0 0 8px rgb(255, 255, 255);
 }
 
 /* Liste des transactions */
@@ -13,7 +14,7 @@
 
 /* Chaque transaction */
 .transaction-item {
-    background-color: #f9f9f9;
+    background: linear-gradient(135deg, #ffffff, #a9ccff);
     border-radius: 10px;
     padding: 15px 20px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
@@ -42,6 +43,7 @@
     font-size: 1rem;
     margin-bottom: 8px;
     color: Black;
+    text-shadow: 0 0 10px rgb(65, 146, 241);
 }
 
 .transaction-amount {
@@ -79,7 +81,7 @@
 
 /* Container principal */
 .transaction-detail {
-    background-color: #f9f9f9; /* léger gris clair */
+    background: linear-gradient(135deg, #ffffff, #a9ccff);
     padding: 20px 30px;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
@@ -94,21 +96,24 @@
     margin-top: 30px;
     margin-bottom: 20px;
     font-size: 28px;
-    color: #333;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgb(65, 146, 241);
 }
 
 /* Chaque ligne de détail */
 .transaction-detail p {
     font-size: 16px;
     margin: 10px 0;
-    color: #555;
+    color: #000000;
+    text-shadow: 0 0 10px rgb(65, 146, 241);
 }
 
 /* Montant mis en valeur */
 .transaction-detail p:first-child {
     font-size: 20px;
     font-weight: bold;
-    color: #2c7a7b; /* bleu-vert */
+    color: #000000;
+    text-shadow: 0 0 10px rgb(65, 146, 241);
 }
 
 /* Statut avec un badge */
@@ -116,8 +121,8 @@
     display: inline-block;
     padding: 5px 12px;
     border-radius: 8px;
-    background-color: #e6fffa;
-    color: #2c7a7b;
+    background: linear-gradient(135deg, #ffffff, #a9ccff);
+    color: #000000;
     font-weight: bold;
 }
 
