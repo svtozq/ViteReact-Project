@@ -9,7 +9,7 @@ export default function AccountDetails() {
     const [error, setError] = useState("");
 
 
-    //*****   PDF   **************************
+    //*****   PDF   *************************
 
     const [loader , setLoader ] = useState(false);
 
