@@ -3,7 +3,7 @@ name: SonarCloud Analysis - Frontend
 on:
   push:
     branches:
-      - main
+      - master
       - ScanCode
   pull_request:
 
