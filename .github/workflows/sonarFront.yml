@@ -1,0 +1,38 @@
+name: SonarCloud Analysis - Frontend
+
+on:
+  push:
+    branches:
+      - main
+      - ScanCode
+  pull_request:
+
+jobs:
+  sonarcloud:
+    name: SonarCloud Frontend
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: |
+          npm install
+        working-directory: frontend
+
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@v2
+        with:
+          projectBaseDir: frontend
+          args: >
+            -Dsonar.projectKey=svtozq_ViteReact-Project
+            -Dsonar.organization=svtozq
+            -Dsonar.sources=.
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
