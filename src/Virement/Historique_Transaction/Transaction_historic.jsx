@@ -52,7 +52,12 @@ export default function Transaction_historic() {
             <div className="transaction-list">
                 {transactions.map((t, index) => (
                     <div key={index} className="transaction-item"
-                         onClick={() => navigate(`/transaction_historic_details/${t.id}`)}  //Pour recuperer l'id de la transaction en question
+                         onClick={() => navigate(`/transaction_historic_details/${t.id}`)}//Pour recuperer l'id de la transaction en question
+                         onKeyDown={(e) => {
+                             if (e.key === "Enter" || e.key === " ") {
+                                 navigate(`/transaction_historic_details/${t.id}`);
+                             }
+                         }}
                          style={{ cursor: "pointer" }}>
                         <div className="transaction-header">
                             <span className="transaction-mss"> Virement effectué à : {t.sender_first_name}</span>

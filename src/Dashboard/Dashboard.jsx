@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import {useEffect, useState} from "react";
+import {Link} from "react-router-dom";
 import "../css/Dashboard.css";
 
 export default function Dashboard() {
     const [accounts, setAccounts] = useState([]);
     const [user, setUser] = useState(null);
-    const [error, setError] = useState("");
+    const [setError] = useState("");
     const [showModal, setShowModal] = useState(false);
     const [loadingCreate, setLoadingCreate] = useState(false);
     const [type, setType] = useState("Compte Secondaire");
@@ -21,8 +21,7 @@ export default function Dashboard() {
                 "Content-Type": "application/json"}
         })
             .then(async res => {
-                const data = await res.json();
-                return data;
+                return await res.json();
             })
             .then(data => {
                 if (data.user) {
@@ -34,7 +33,7 @@ export default function Dashboard() {
                 }
             })
             .catch(() => setError("Erreur serveur"));
-    }, []);
+    }, [setError]);
 
 
     async function createNewAccount() {

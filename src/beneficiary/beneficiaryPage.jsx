@@ -3,7 +3,7 @@ import "../css/beneficiary.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import Add_button_beneficiary from "./add_button_beneficiary.jsx";
-import Button_back_Payment from "../Virement/Historique_Transaction/Back_button_Payment.jsx";
+
 
 
 
@@ -101,6 +101,11 @@ function BeneficiaryPage() {
                     beneficiary.map(b => (
                         <div key={b.id} className="beneficiary-item"
                              onClick={() => navigate(`/beneficiary_Payment/${b.bank_account.iban}`)}//Pour recuperer l'id de la transaction en question
+                             onKeyDown={(e) => {
+                                 if (e.key === "Enter" || e.key === " ") {
+                                     navigate(`/beneficiary_Payment/${b.bank_account.iban}`);
+                                 }
+                             }}
                              style={{ cursor: "pointer" }}>
                             {b.first_name} {b.last_name} — {b.bank_account.iban} - {formatDate(b.Beneficiary_date)}
                         </div>
