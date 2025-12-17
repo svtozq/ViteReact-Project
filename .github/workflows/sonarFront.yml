@@ -5,7 +5,7 @@ on:
     branches:
       - main
       - ScanCode
-      - -sonar_cube_front
+      - sonar_cube_front
   pull_request:
 
 jobs:
