@@ -13,7 +13,7 @@ export default function Transaction_historic() {
     function formatDate(dateString) {
         if (!dateString) return "";
 
-        // Convertit "2024-01-20 19:48:00" en "2024-01-20T19:48:00"
+        // Convertitt "2024-01-20 19:48:00" en "2024-01-20T19:48:00"
         const isoString = dateString.replace(" ", "T") + "Z";
 
         const date = new Date(isoString);
