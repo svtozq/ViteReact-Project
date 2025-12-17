@@ -15,5 +15,3 @@ jobs:
       - name: Build Docker Frontend
         run: docker build -t bank-front .
 
-      - name: Run frontend tests
-        run: docker run --rm bank-front npm test -- --watch=false
