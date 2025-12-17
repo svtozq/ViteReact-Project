@@ -26,7 +26,7 @@ export default function AccountDetails() {
             const imgHeight = canvas.height;
 
             // Taille max souhaitée dans le PDF (mm)
-            const maxWidth = 120;   // légèrement moins large que A4
+            const maxWidth = 120;   // legerement moins large que A4
             const maxHeight = 100;  // moins haut pour éviter l’étirement
 
             // Calcul du ratio pour garder les proportions
