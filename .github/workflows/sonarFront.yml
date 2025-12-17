@@ -22,14 +22,12 @@ jobs:
           node-version: 18
 
       - name: Install dependencies
-        run: |
-          npm install
-        working-directory: Revolut-Front
+        run: npm install
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@v2
         with:
-          projectBaseDir: Revolut-Front
+          projectBaseDir: .
           args: >
             -Dsonar.projectKey=svtozq_ViteReact-Project
             -Dsonar.organization=svtozq
