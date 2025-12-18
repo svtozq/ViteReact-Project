@@ -90,24 +90,29 @@ function MoneyDeposit() {
             </div>
 
 
-            {/* Selection du compte source */}
+            {/* SECTION COMPTE SOURCE */}
             <div className="section">
-                <label className="section-label">Compte source</label>
-                <SelectAccountTypeSource type={from_account_id} setType={setFrom_account_id} accounts={accounts}/>
+                <label className="section-label">
+                    Compte source
+                    <SelectAccountTypeSource type={from_account_id} setType={setFrom_account_id} accounts={accounts} />
+                </label>
                 <p className="section-label2">
                     Compte sélectionné : {accounts.find(acc => acc.id === Number.parseInt(from_account_id))?.type || "Aucun"}
                 </p>
             </div>
 
 
-            {/* Selection du compte destinataire */}
+            {/* SECTION COMPTE DESTINATAIRE */}
             <div className="section">
-                <label className="section-label">Compte Destinataire</label>
-                <SelectAccountTypeDestination type={to_account_id} setType={setTo_account_id} accounts={accounts}/>
+                <label className="section-label">
+                    Compte Destinataire
+                    <SelectAccountTypeDestination type={to_account_id} setType={setTo_account_id} accounts={accounts} />
+                </label>
                 <p className="section-label2">
                     Compte sélectionné : {accounts.find(acc => acc.id === Number.parseInt(to_account_id))?.type || "Aucun"}
                 </p>
             </div>
+
 
             {/* BOUTON */}
             <ButtonSubmitPayment onClick={handleSubmit}/>

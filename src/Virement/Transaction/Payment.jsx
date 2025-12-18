@@ -97,9 +97,16 @@ function Payment() {
                 </div>
 
             {/* Selection du compte source */}
+            {/* SECTION COMPTE SOURCE */}
             <div className="section">
-                <label className="section-label">Compte source</label>
-                <SelectAccountTypeSource type={from_account_id} setType={setFrom_account_id} accounts={accounts}/>
+                <label className="section-label">
+                    Compte source
+                    <SelectAccountTypeSource
+                        type={from_account_id}
+                        setType={setFrom_account_id}
+                        accounts={accounts}
+                    />
+                </label>
                 <p className="section-label2">
                     Compte sélectionné : {accounts.find(acc => acc.id === Number.parseInt(from_account_id))?.type || "Aucun"}
                 </p>
