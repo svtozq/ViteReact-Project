@@ -1,12 +1,12 @@
 import '../../css/Payment.css'
 import {useEffect, useState} from "react";
-import Button_Submit_Payment from "./Submit_Payment.jsx";
-import SearchBar_somme from "./SearchBar.jsx";
-import SearchBar_iban from "./SearchBar_iban.jsx";
-import Text_note from "./Text_note.jsx";
-import Button_history_Payment from "./Button_History_Payment.jsx";
+import ButtonSubmitPayment from "./Submit_Payment.jsx";
+import SearchBarSomme from "./SearchBar.jsx";
+import SearchBarIban from "./SearchBarIban.jsx";
+import TextNote from "./TextNote.jsx";
+import ButtonHistoryPayment from "./ButtonHistoryPayment.jsx";
 import { useNavigate } from 'react-router-dom';
-import SelectAccountType_source from "../Depot_argent/Select_depot_source.jsx";
+import SelectAccountTypeSource from "../Depot_argent/Select_depot_source.jsx";
 
 function Payment() {
     const [errorMessage, setErrorMessage] = useState("");
@@ -16,7 +16,7 @@ function Payment() {
     const [from_account_id, setFrom_account_id] = useState("");
     const [toAccount, setToAccount] = useState("");
     const [message, setMessage] = useState("");
-    const cleanedIBAN = toAccount.replace(/\s+/g, "");
+    const cleanedIBAN = toAccount.replaceAll(/\s+/g, "");
     const [accounts, setAccounts] = useState([]);
     const navigate = useNavigate();
 
@@ -93,13 +93,13 @@ function Payment() {
                 {/* SECTION SOMME */}
                 <div className="section">
                     <h2 className="section-label">Somme</h2>
-                    <SearchBar_somme query={amount} setQuery={setAmount}/>
+                    <SearchBarSomme query={amount} setQuery={setAmount}/>
                 </div>
 
             {/* Selection du compte source */}
             <div className="section">
                 <label className="section-label">Compte source</label>
-                <SelectAccountType_source type={from_account_id} setType={setFrom_account_id} accounts={accounts}/>
+                <SelectAccountTypeSource type={from_account_id} setType={setFrom_account_id} accounts={accounts}/>
                 <p className="section-label2">
                     Compte sélectionné : {accounts.find(acc => acc.id === Number.parseInt(from_account_id))?.type || "Aucun"}
                 </p>
@@ -108,18 +108,18 @@ function Payment() {
             {/* SECTION IBAN */}
             <div className="section">
                 <h2 className="section-label">IBAN</h2>
-                <SearchBar_iban query={toAccount} setQuery={setToAccount}/>
+                <SearchBarIban query={toAccount} setQuery={setToAccount}/>
             </div>
 
                 {/* SECTION NOTE */}
                 <div className="section">
                     <h2 className="section-label">Note</h2>
-                    <Text_note query={message} setQuery={setMessage}/>
+                    <TextNote query={message} setQuery={setMessage}/>
                 </div>
 
             {/* BOUTON */}
-            <Button_Submit_Payment onClick={handleSubmit}/>
-            <Button_history_Payment onClick={() => navigate('/transaction_historic')} />
+            <ButtonSubmitPayment onClick={handleSubmit}/>
+            <ButtonHistoryPayment onClick={() => navigate('/transaction_historic')} />
 
         </div>
     );

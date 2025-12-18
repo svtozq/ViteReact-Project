@@ -1,7 +1,7 @@
 function LogOut() {
     const handleLogOut = () => {
         localStorage.removeItem("token"); // supprime le token
-        window.location.href = "/login";  // redirige vers login
+        globalThis.location.href = "/login";  // redirige vers login
     };
 
     return (

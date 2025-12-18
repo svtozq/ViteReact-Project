@@ -1,11 +1,11 @@
 import '../css/Beneficiary_Payment.css'
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect,useState } from "react";
-import SearchBar_somme from "../Virement/Transaction/SearchBar.jsx";
-import Text_note from "../Virement/Transaction/Text_note.jsx";
-import SelectAccountType_source from "../Virement/Depot_argent/Select_depot_source.jsx";
+import SearchBarSomme from "../Virement/Transaction/SearchBar.jsx";
+import TextNote from "../Virement/Transaction/TextNote.jsx";
+import SelectAccountTypeSource from "../Virement/Depot_argent/Select_depot_source.jsx";
 
-function Beneficiary_Payment() {
+function BeneficiaryPayment() {
 
     const { iban } = useParams();   // Récupération de l'IBAN depuis l'URL
     const navigate = useNavigate();
@@ -96,13 +96,13 @@ function Beneficiary_Payment() {
             {/* MONTANT */}
             <div className="section">
                 <label className="section-label" htmlFor="amount">Montant</label>
-                <SearchBar_somme query={amount} setQuery={setAmount}/>
+                <SearchBarSomme query={amount} setQuery={setAmount}/>
             </div>
 
             {/* Selection du compte source */}
             <div className="section">
                 <label className="section-label">Compte source</label>
-                <SelectAccountType_source type={from_account_id} setType={setFrom_account_id} accounts={accounts}/>
+                <SelectAccountTypeSource type={from_account_id} setType={setFrom_account_id} accounts={accounts}/>
                 <p className="section-label2">
                     Compte sélectionné : {accounts.find(acc => acc.id === Number.parseInt(from_account_id))?.type || "Aucun"}
                 </p>
@@ -111,7 +111,7 @@ function Beneficiary_Payment() {
             {/* NOTE */}
             <div className="section">
                 <label className="section-label">Note</label>
-                <Text_note query={message} setQuery={setMessage}/>
+                <TextNote query={message} setQuery={setMessage}/>
             </div>
 
             {/* BOUTONS */}
@@ -122,4 +122,4 @@ function Beneficiary_Payment() {
     );
 }
 
-export default Beneficiary_Payment;
+export default BeneficiaryPayment;

@@ -2,7 +2,7 @@ import '../../css/Payment.css'
 import PropTypes from 'prop-types';
 
 
-export default function Text_note({query, setQuery}) {
+export default function TextNote({query, setQuery}) {
     return (
         <textarea
             className="note_text"
@@ -14,7 +14,7 @@ export default function Text_note({query, setQuery}) {
     );
 }
 
-Text_note.propTypes = {
+TextNote.propTypes = {
     query: PropTypes.string.isRequired,
     setQuery: PropTypes.func.isRequired,
 };

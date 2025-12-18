@@ -41,7 +41,7 @@ function LogIn() {
                 }
 
                 localStorage.setItem("token", result.token);
-                window.location.href = "/dashboard";
+                globalThis.location.href = "/dashboard";
             })
             .catch(() => {
                 setErrorMessage("Connection Server Error !");

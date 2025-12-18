@@ -1,12 +1,12 @@
 import '../../css/Money_deposit.css'
-import Button_Submit_Payment from "../Transaction/Submit_Payment.jsx";
+import ButtonSubmitPayment from "../Transaction/Submit_Payment.jsx";
 import {useEffect,useState} from "react";
-import SelectAccountType_source from "./Select_depot_source.jsx";
-import SearchBar_somme from "../Transaction/SearchBar.jsx";
-import SelectAccountType_destination from "./Select_depot_destination.jsx";
+import SelectAccountTypeSource from "./Select_depot_source.jsx";
+import SearchBarSomme from "../Transaction/SearchBar.jsx";
+import SelectAccountTypeDestination from "./Select_depot_destination.jsx";
 
 
-function Money_deposit() {
+function MoneyDeposit() {
     const [errorMessage, setErrorMessage] = useState("");
     const [successMessage, setSuccessMessage] = useState("");
 
@@ -85,14 +85,14 @@ function Money_deposit() {
                 <label
                     className="section-label">Somme
                 </label>
-                <SearchBar_somme query={amount} setQuery={setAmount}/>
+                <SearchBarSomme query={amount} setQuery={setAmount}/>
             </div>
 
 
             {/* Selection du compte source */}
             <div className="section">
                 <label className="section-label">Compte source</label>
-                <SelectAccountType_source type={from_account_id} setType={setFrom_account_id} accounts={accounts}/>
+                <SelectAccountTypeSource type={from_account_id} setType={setFrom_account_id} accounts={accounts}/>
                 <p className="section-label2">
                     Compte sélectionné : {accounts.find(acc => acc.id === Number.parseInt(from_account_id))?.type || "Aucun"}
                 </p>
@@ -102,18 +102,18 @@ function Money_deposit() {
             {/* Selection du compte destinataire */}
             <div className="section">
                 <label className="section-label">Compte Destinataire</label>
-                <SelectAccountType_destination type={to_account_id} setType={setTo_account_id} accounts={accounts}/>
+                <SelectAccountTypeDestination type={to_account_id} setType={setTo_account_id} accounts={accounts}/>
                 <p className="section-label2">
                     Compte sélectionné : {accounts.find(acc => acc.id === Number.parseInt(to_account_id))?.type || "Aucun"}
                 </p>
             </div>
 
             {/* BOUTON */}
-            <Button_Submit_Payment onClick={handleSubmit}/>
+            <ButtonSubmitPayment onClick={handleSubmit}/>
         </div>
         </div>
     );
 }
 
 
-export default Money_deposit;
+export default MoneyDeposit;

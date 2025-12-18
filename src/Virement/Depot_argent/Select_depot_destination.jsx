@@ -1,7 +1,7 @@
 import '../../css/Money_deposit.css'
 import PropTypes from 'prop-types';
 
-export default function SelectAccountType_destination({ type, setType, accounts }) {
+export default function SelectAccountTypeDestination({ type, setType, accounts }) {
     return (
         <select value={type} onChange={(e) => setType(e.target.value)}>
             <option value="">-- Choisir un compte --</option>
@@ -14,7 +14,7 @@ export default function SelectAccountType_destination({ type, setType, accounts 
     );
 }
 
-SelectAccountType_destination.propTypes = {
+SelectAccountTypeDestination.propTypes = {
     type: PropTypes.string.isRequired,
     setType: PropTypes.func.isRequired,
     accounts: PropTypes.arrayOf(

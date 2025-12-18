@@ -107,7 +107,7 @@ export default function AccountDetails() {
             {/*PDF*/}
             <button className={"receip-modal-download-button"}
                     onClick={downloadPDF}
-                    disabled={!(loader===false)}>
+                    disabled={loader!==false}>
 
                 {loader?(
                     <span>Downloading</span>

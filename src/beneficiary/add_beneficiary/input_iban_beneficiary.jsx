@@ -1,7 +1,7 @@
 import '../../css/add_beneficiary.css'
 import PropTypes from 'prop-types';
 
-export default function Add_beneficiary_iban({query, setQuery}) {
+export default function AddBeneficiaryIban({query, setQuery}) {
     return (
         <input className={"iban"}
                type="text"
@@ -12,7 +12,7 @@ export default function Add_beneficiary_iban({query, setQuery}) {
     );
 }
 
-Add_beneficiary_iban.propTypes = {
+AddBeneficiaryIban.propTypes = {
     query: PropTypes.string.isRequired,
     setQuery: PropTypes.func.isRequired,
 };

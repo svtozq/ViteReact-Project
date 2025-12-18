@@ -2,7 +2,7 @@ import '../../css/Payment.css'
 import PropTypes from 'prop-types';
 
 
-export default function SearchBar_iban({query, setQuery}) {
+export default function SearchBarIban({query, setQuery}) {
     return (
         <input className= {"iban_input"}
                value={query}
@@ -13,7 +13,7 @@ export default function SearchBar_iban({query, setQuery}) {
 }
 
 //validation of Props
-SearchBar_iban.propTypes = {
+SearchBarIban.propTypes = {
     query: PropTypes.string.isRequired,
     setQuery: PropTypes.func.isRequired,
 };

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import '../../css/Transaction_historic.css'
 import { useNavigate } from 'react-router-dom';
-import Button_back_Payment from "./Back_button_Payment.jsx";
+import ButtonBackPayment from "./Back_button_Payment.jsx";
 
 
 // Pour le bon format de date
@@ -22,7 +22,7 @@ function formatDate(dateString) {
     });
 }
 
-export default function Transaction_historic() {
+export default function TransactionHistoric() {
     const [transactions, setTransactions] = useState([]);
     const navigate = useNavigate();
 
@@ -65,7 +65,7 @@ export default function Transaction_historic() {
                     </div>
                 ))}
             </div>
-            <Button_back_Payment onClick={() => navigate(-1)} />
+            <ButtonBackPayment onClick={() => navigate(-1)} />
         </div>
     );
 }

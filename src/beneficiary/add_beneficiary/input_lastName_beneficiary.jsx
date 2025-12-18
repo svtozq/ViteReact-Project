@@ -1,7 +1,7 @@
 import '../../css/add_beneficiary.css'
 import PropTypes from 'prop-types';
 
-export default function Add_beneficiary_lastName({query, setQuery}) {
+export default function AddBeneficiaryLastName({query, setQuery}) {
     return (
         <input className={"lastname"}
                type="text"
@@ -12,7 +12,7 @@ export default function Add_beneficiary_lastName({query, setQuery}) {
     );
 }
 
-Add_beneficiary_lastName.propTypes = {
+AddBeneficiaryLastName.propTypes = {
     query: PropTypes.string.isRequired,
     setQuery: PropTypes.func.isRequired,
 };

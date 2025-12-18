@@ -1,6 +1,6 @@
 import '../../css/Payment.css'
 import PropTypes from 'prop-types';
-export default function SearchBar_somme({query, setQuery}) {
+export default function SearchBarSomme({query, setQuery}) {
     return (
         <input className={"somme_input"}
                value={query}
@@ -10,7 +10,7 @@ export default function SearchBar_somme({query, setQuery}) {
     );
 }
 
-SearchBar_somme.propTypes = {
+SearchBarSomme.propTypes = {
     query: PropTypes.string.isRequired,
     setQuery: PropTypes.func.isRequired,
 };

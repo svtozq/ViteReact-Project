@@ -47,7 +47,7 @@ function SignIn() {
                     return;
                 }
 
-                window.location.href = "/login";
+                globalThis.location.href = "/login";
             })
             .catch(() => {
                 setErrorMessage("Connection Server Error !");
@@ -55,7 +55,7 @@ function SignIn() {
     }
 
     return (
-        <>
+
             <div className="signInClass">
                 <div className="form-group">
                 <form>

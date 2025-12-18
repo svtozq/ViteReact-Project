@@ -2,8 +2,7 @@
 import "../css/beneficiary.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import Add_button_beneficiary from "./add_button_beneficiary.jsx";
-import Button_back_Payment from "../Virement/Historique_Transaction/Back_button_Payment.jsx";
+import AddButtonBeneficiary from "./add_button_beneficiary.jsx";
 
 // Pour le bon format de date
 function formatDate(dateString) {
@@ -24,7 +23,7 @@ function formatDate(dateString) {
 }
 
 function BeneficiaryPage() {
-    const [beneficiary, setBeneficiaries] = useState([]);
+    const [beneficiaries, setBeneficiaries] = useState([]);
 
     const [loading, setLoading] = useState(true);
 
@@ -65,7 +64,7 @@ function BeneficiaryPage() {
 
                 setBeneficiaries(Array.isArray(data.beneficiaries) ? data.beneficiaries : []);
 
-               
+
                 setTimeout(() => setSuccessMessage(""), 3000);
                 setLoading(false);
             })
@@ -92,10 +91,10 @@ function BeneficiaryPage() {
             </header>*/}
 
             <div className="beneficiary-content">
-                {beneficiary.length === 0 ? (
+                {beneficiaries.length === 0 ? (
                     <p>Aucun bénéficiaire trouvé.</p>
                 ) : (
-                    beneficiary.map(b => (
+                    beneficiaries.map(b => (
                         <div key={b.id} className="beneficiary-item"
                              onClick={() => navigate(`/beneficiary_Payment/${b.bank_account.iban}`)}//Pour recuperer l'id de la transaction en question
                              style={{ cursor: "pointer" }}>
@@ -106,10 +105,10 @@ function BeneficiaryPage() {
             </div>
 
             <div className="beneficiary-footer">
-                Total de bénéficiaires : {beneficiary.length}
+                Total de bénéficiaires : {beneficiaries.length}
             </div>
 
-            <Add_button_beneficiary onClick={() => navigate('/add_beneficiary')} />
+            <AddButtonBeneficiary onClick={() => navigate('/add_beneficiary')} />
 
 
         </main>

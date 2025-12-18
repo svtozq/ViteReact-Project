@@ -1,14 +1,14 @@
 import '../../css/add_beneficiary.css'
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import Add_beneficiary_iban from "./input_iban_beneficiary.jsx";
-import Add_beneficiary_firstName from "./input_firstName_beneficiary.jsx";
-import Button_add_beneficiary from "./button_add_beneficiary.jsx";
-import Button_back_Payment from "../../Virement/Historique_Transaction/Back_button_Payment.jsx";
-import Add_beneficiary_lastName from "./input_lastName_beneficiary.jsx";
+import AddBeneficiaryIban from "./input_iban_beneficiary.jsx";
+import AddBeneficiaryFirstName from "./input_firstName_beneficiary.jsx";
+import ButtonAddBeneficiary from "./button_add_beneficiary.jsx";
+import ButtonBackPayment from "../../Virement/Historique_Transaction/Back_button_Payment.jsx";
+import AddBeneficiaryLastName from "./input_lastName_beneficiary.jsx";
 
 
-function Add_beneficiary() {
+function AddBeneficiary() {
     const [name, setname] = useState("");
     const [lastName, setlastName] = useState("");
     const [iban, setiban] = useState("");
@@ -65,19 +65,19 @@ function Add_beneficiary() {
             {/* SECTION IBAN */}
             <div className="section">
                 <label className="section-label">IBAN</label>
-                <Add_beneficiary_iban query={iban} setQuery={setiban}/>
+                <AddBeneficiaryIban query={iban} setQuery={setiban}/>
             </div>
 
             {/* SECTION NAME */}
             <div className="section">
                 <label className="section-label">Note</label>
-                <Add_beneficiary_firstName query={name} setQuery={setname}/>
-                <Add_beneficiary_lastName query={lastName} setQuery={setlastName}/>
+                <AddBeneficiaryFirstName query={name} setQuery={setname}/>
+                <AddBeneficiaryLastName query={lastName} setQuery={setlastName}/>
             </div>
 
             {/* BOUTON */}
-            <Button_add_beneficiary onClick={handleSubmit}/>
-            <Button_back_Payment onClick={() => navigate('/beneficiary')} />
+            <ButtonAddBeneficiary onClick={handleSubmit}/>
+            <ButtonBackPayment onClick={() => navigate('/beneficiary')} />
 
 
         </div>
@@ -85,4 +85,4 @@ function Add_beneficiary() {
 
 }
 
-export default Add_beneficiary;
+export default AddBeneficiary;
