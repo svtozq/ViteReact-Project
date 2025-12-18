@@ -84,13 +84,15 @@ function BeneficiaryPayment() {
 
             {/* IBAN FIXE */}
             <div className="section">
-                <label className="section-label">IBAN du bénéficiaire</label>
-                <input
-                    className="iban-display"
-                    type="text"
-                    value={iban}
-                    disabled
-                />
+                <label className="section-label">
+                    IBAN du bénéficiaire
+                    <input
+                        className="iban-display"
+                        type="text"
+                        value={iban}
+                        disabled
+                    />
+                </label>
             </div>
 
             {/* MONTANT */}
@@ -101,17 +103,25 @@ function BeneficiaryPayment() {
 
             {/* Selection du compte source */}
             <div className="section">
-                <label className="section-label">Compte source</label>
-                <SelectAccountTypeSource type={from_account_id} setType={setFrom_account_id} accounts={accounts}/>
+                <label className="section-label">
+                    Compte source
+                    <SelectAccountTypeSource
+                        type={from_account_id}
+                        setType={setFrom_account_id}
+                        accounts={accounts}
+                    />
+                </label>
                 <p className="section-label2">
                     Compte sélectionné : {accounts.find(acc => acc.id === Number.parseInt(from_account_id))?.type || "Aucun"}
                 </p>
             </div>
 
-            {/* NOTE */}
+            {/* SECTION NOTE */}
             <div className="section">
-                <label className="section-label">Note</label>
-                <TextNote query={message} setQuery={setMessage}/>
+                <label className="section-label">
+                    Note
+                    <TextNote query={message} setQuery={setMessage} />
+                </label>
             </div>
 
             {/* BOUTONS */}

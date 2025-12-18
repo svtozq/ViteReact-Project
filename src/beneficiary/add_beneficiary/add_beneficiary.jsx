@@ -63,15 +63,19 @@ function AddBeneficiary() {
 
             {/* SECTION IBAN */}
             <div className="section">
-                <label className="section-label">IBAN</label>
-                <AddBeneficiaryIban query={iban} setQuery={setiban}/>
+                <label className="section-label">
+                    IBAN
+                    <AddBeneficiaryIban query={iban} setQuery={setiban} />
+                </label>
             </div>
 
-            {/* SECTION NAME */}
+            {/* SECTION NOTE */}
             <div className="section">
-                <label className="section-label">Note</label>
-                <AddBeneficiaryFirstName query={name} setQuery={setname}/>
-                <AddBeneficiaryLastName query={lastName} setQuery={setlastName}/>
+                <label className="section-label">
+                    Note
+                    <AddBeneficiaryFirstName query={name} setQuery={setname} />
+                    <AddBeneficiaryLastName query={lastName} setQuery={setlastName} />
+                </label>
             </div>
 
             {/* BOUTON */}
