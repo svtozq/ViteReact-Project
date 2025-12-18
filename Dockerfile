@@ -1,30 +1,30 @@
-# Étape de build React
+# React build step
 FROM node:20-alpine AS build
 
-# Dossier de travail
+# Working file
 WORKDIR /app
 
-# Copier les fichiers de dépendances
+# Copy the dependency files
 COPY package*.json ./
 
-# Installer les dépendances
+# Install the dependencies
 RUN npm install
 RUN npm install prop-types
 
 
-# Copier le reste du code
+# Copy the rest of the code
 COPY . .
 
-# Build de l'application React
+# React application build
 RUN npm run build
 
-# Étape serveur Nginx
+# Nginx server step
 FROM nginx:alpine
 
-# Copier le build React vers Nginx
+# Copy React build to Nginx
 COPY --from=build /app/dist /usr/share/nginx/html
 
-# Exposer le port 80
+# Expose port 80
 EXPOSE 80
 
-# Nginx se lance automatiquement
+# Nginx starts automatically
