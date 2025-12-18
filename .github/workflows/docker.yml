@@ -27,7 +27,7 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      # 4. Construire et taguer l'image !!!
+      # 4. Construire et taguer l'image !!!!!!
       - name: Build Docker image
         run: |
           IMAGE_NAME=bank-frontend
