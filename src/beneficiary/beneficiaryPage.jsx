@@ -5,7 +5,23 @@ import { useNavigate } from 'react-router-dom';
 import Add_button_beneficiary from "./add_button_beneficiary.jsx";
 import Button_back_Payment from "../Virement/Historique_Transaction/Back_button_Payment.jsx";
 
+// Pour le bon format de date
+function formatDate(dateString) {
+    if (!dateString) return "";
 
+    // Convertit "2024-01-20 19:48:00" en "2024-01-20T19:48:00"
+    const isoString = dateString.replace(" ", "T") + "Z";
+
+    const date = new Date(isoString);
+
+    return date.toLocaleString("fr-FR", {
+        hour: "2-digit",
+        minute: "2-digit",
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric"
+    });
+}
 
 function BeneficiaryPage() {
     const [beneficiary, setBeneficiaries] = useState([]);
@@ -19,25 +35,6 @@ function BeneficiaryPage() {
     //token
     const token = localStorage.getItem("token");
     console.log("Token de connexion :", token);
-
-
-    // Pour le bon format de date
-    function formatDate(dateString) {
-        if (!dateString) return "";
-
-        // Convertit "2024-01-20 19:48:00" en "2024-01-20T19:48:00"
-        const isoString = dateString.replace(" ", "T") + "Z";
-
-        const date = new Date(isoString);
-
-        return date.toLocaleString("fr-FR", {
-            hour: "2-digit",
-            minute: "2-digit",
-            day: "2-digit",
-            month: "2-digit",
-            year: "numeric"
-        });
-    }
 
     useEffect(() => {
 
@@ -68,7 +65,7 @@ function BeneficiaryPage() {
 
                 setBeneficiaries(Array.isArray(data.beneficiaries) ? data.beneficiaries : []);
 
-                {/*setSuccessMessage("Bénéficiaires chargés avec succès");*/}
+               
                 setTimeout(() => setSuccessMessage(""), 3000);
                 setLoading(false);
             })

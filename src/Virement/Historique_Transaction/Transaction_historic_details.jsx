@@ -4,29 +4,30 @@ import '../../css/Transaction_historic.css'
 import { useNavigate } from 'react-router-dom';
 import Button_back_Payment from "./Back_button_Payment.jsx";
 
+// Pour le bon format de date
+function formatDate(dateString) {
+    if (!dateString) return "";
+
+    // Convertit "2024-01-20 19:48:00" en "2024-01-20T19:48:00"
+    const isoString = dateString.replace(" ", "T") + "Z";
+
+    const date = new Date(isoString);
+
+    return date.toLocaleString("fr-FR", {
+        hour: "2-digit",
+        minute: "2-digit",
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric"
+    });
+}
+
 
 export default function Transaction_historic_details() {
     const { id } = useParams();
     const [transaction, setTransaction] = useState(null);
     const navigate = useNavigate();
 
-    // Pour le bon format de date
-    function formatDate(dateString) {
-        if (!dateString) return "";
-
-        // Convertit "2024-01-20 19:48:00" en "2024-01-20T19:48:00"
-        const isoString = dateString.replace(" ", "T") + "Z";
-
-        const date = new Date(isoString);
-
-        return date.toLocaleString("fr-FR", {
-            hour: "2-digit",
-            minute: "2-digit",
-            day: "2-digit",
-            month: "2-digit",
-            year: "numeric"
-        });
-    }
 
 
     useEffect(() => {

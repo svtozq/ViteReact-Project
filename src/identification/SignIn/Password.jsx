@@ -1,5 +1,6 @@
 import '../../css/SignIn.css'
-
+import PropTypes from 'prop-types';
+import Email from "./Email.jsx";
 export default function Password({input, setInput}) {
     return (
         <input className={"password"}
@@ -10,3 +11,7 @@ export default function Password({input, setInput}) {
         />
     );
 }
+Password.propTypes = {
+    input: PropTypes.string.isRequired,
+    setInput: PropTypes.func.isRequired,
+};

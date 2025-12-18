@@ -1,4 +1,5 @@
 import '../../css/Money_deposit.css'
+import PropTypes from 'prop-types';
 
 export default function SelectAccountType_destination({ type, setType, accounts }) {
     return (
@@ -12,3 +13,18 @@ export default function SelectAccountType_destination({ type, setType, accounts 
         </select>
     );
 }
+
+SelectAccountType_destination.propTypes = {
+    type: PropTypes.string.isRequired,
+    setType: PropTypes.func.isRequired,
+    accounts: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.oneOfType([
+                PropTypes.string,
+                PropTypes.number
+            ]).isRequired,
+            type: PropTypes.string.isRequired,
+            balance: PropTypes.number.isRequired,
+        })
+    ).isRequired,
+};

@@ -1,4 +1,5 @@
 import '../../css/SignIn.css'
+import PropTypes from 'prop-types';
 
 export default function Email({input, setInput}) {
     return (
@@ -10,3 +11,8 @@ export default function Email({input, setInput}) {
         />
     );
 }
+
+Email.propTypes = {
+    input: PropTypes.string.isRequired,
+    setInput: PropTypes.func.isRequired,
+};

@@ -1,4 +1,6 @@
 import '../../css/LogIn.css'
+import PropTypes from 'prop-types';
+
 
 export default function Password({input, setInput}) {
     return (
@@ -10,3 +12,7 @@ export default function Password({input, setInput}) {
         />
     );
 }
+Password.propTypes = {
+    input: PropTypes.string.isRequired,
+    setInput: PropTypes.func.isRequired,
+};

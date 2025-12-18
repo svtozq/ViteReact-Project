@@ -1,5 +1,5 @@
 import '../../css/Payment.css'
-
+import PropTypes from 'prop-types';
 export default function SearchBar_somme({query, setQuery}) {
     return (
         <input className={"somme_input"}
@@ -9,4 +9,9 @@ export default function SearchBar_somme({query, setQuery}) {
         />
     );
 }
+
+SearchBar_somme.propTypes = {
+    query: PropTypes.string.isRequired,
+    setQuery: PropTypes.func.isRequired,
+};
 

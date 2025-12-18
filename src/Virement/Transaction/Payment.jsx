@@ -46,7 +46,7 @@ function Payment() {
     //Bouton qui envoie les données recuperer au back
     function handleSubmit() {
         const data = {
-            amount: parseFloat(amount),
+            amount: Number.parseFloat(amount),
             to_account_id: cleanedIBAN,
             message: message
         };
@@ -101,7 +101,7 @@ function Payment() {
                 <label className="section-label">Compte source</label>
                 <SelectAccountType_source type={from_account_id} setType={setFrom_account_id} accounts={accounts}/>
                 <p className="section-label2">
-                    Compte sélectionné : {accounts.find(acc => acc.id === parseInt(from_account_id))?.type || "Aucun"}
+                    Compte sélectionné : {accounts.find(acc => acc.id === Number.parseInt(from_account_id))?.type || "Aucun"}
                 </p>
             </div>
 

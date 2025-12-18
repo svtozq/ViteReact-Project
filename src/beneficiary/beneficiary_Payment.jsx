@@ -40,7 +40,7 @@ function Beneficiary_Payment() {
     const data = {
         amount: Number(amount),
         message: message,
-        from_account_id: parseInt(from_account_id),
+        from_account_id: Number.parseInt(from_account_id),
         iban_account: iban
     };
 
@@ -104,7 +104,7 @@ function Beneficiary_Payment() {
                 <label className="section-label">Compte source</label>
                 <SelectAccountType_source type={from_account_id} setType={setFrom_account_id} accounts={accounts}/>
                 <p className="section-label2">
-                    Compte sélectionné : {accounts.find(acc => acc.id === parseInt(from_account_id))?.type || "Aucun"}
+                    Compte sélectionné : {accounts.find(acc => acc.id === Number.parseInt(from_account_id))?.type || "Aucun"}
                 </p>
             </div>
 
