@@ -1,5 +1,5 @@
 # Étape de build React
-FROM node:18-alpine AS build
+FROM node:20-alpine AS build
 
 # Dossier de travail
 WORKDIR /app
@@ -9,6 +9,8 @@ COPY package*.json ./
 
 # Installer les dépendances
 RUN npm install
+RUN npm install prop-types
+
 
 # Copier le reste du code
 COPY . .

@@ -1,4 +1,3 @@
-import '../../css/add_beneficiary.css'
 import PropTypes from 'prop-types';
 import SearchBar_somme from "../../Virement/Transaction/SearchBar.jsx";
 export default function Add_beneficiary_firstName({query, setQuery}) {

@@ -1,4 +1,3 @@
-import '../../css/add_beneficiary.css'
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import Add_beneficiary_iban from "./input_iban_beneficiary.jsx";

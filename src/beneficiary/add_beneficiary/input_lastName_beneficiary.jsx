@@ -1,4 +1,3 @@
-import '../../css/add_beneficiary.css'
 import PropTypes from 'prop-types';
 
 export default function Add_beneficiary_lastName({query, setQuery}) {
