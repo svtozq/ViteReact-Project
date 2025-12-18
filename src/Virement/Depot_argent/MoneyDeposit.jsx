@@ -82,10 +82,11 @@ function MoneyDeposit() {
 
             {/* SECTION SOMME */}
             <div className="section">
-                <label
-                    className="section-label">Somme
+                <label className="section-label">
+                    <input type="text"/> SOMME
+                    <SearchBarSomme query={amount} setQuery={setAmount}/>
                 </label>
-                <SearchBarSomme query={amount} setQuery={setAmount}/>
+
             </div>
 
 

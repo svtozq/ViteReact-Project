@@ -1,6 +1,6 @@
 import '../css/beneficiary.css'
 import PropTypes from 'prop-types';
-import ButtonAddBeneficiary from "./add_beneficiary/button_add_beneficiary.jsx";
+
 
 
 export default function AddButtonBeneficiary({ onClick }){
